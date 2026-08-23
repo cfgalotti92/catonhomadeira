@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "catonhomadeira-router",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-23",
+  "routes": [
+    {
+      "pattern": "catonhomadeira.com.br/*",
+      "zone_name": "catonhomadeira.com.br"
+    },
+    {
+      "pattern": "www.catonhomadeira.com.br/*",
+      "zone_name": "catonhomadeira.com.br"
+    },
+    {
+      "pattern": "lp.catonhomadeira.com.br/*",
+      "zone_name": "catonhomadeira.com.br"
+    }
+  ]
+}
