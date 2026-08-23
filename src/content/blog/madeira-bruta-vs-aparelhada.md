@@ -4,7 +4,7 @@ description: "Entenda a diferença técnica entre madeira serrada bruta e madeir
 pubDate: 2026-08-15
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Madeiras e Telhados"
+category: "Madeiras e Estruturas"
 tags: ["madeira bruta", "madeira aparelhada", "viga aparelhada", "carpintaria", "acabamento madeira"]
 image: "/images/products/madeiras/bloco-macaranduba-aparelhado.png"
 imageAlt: "Bloco de maçaranduba aparelhada com cantos e faces perfeitamente lisas e uniformes"

@@ -4,7 +4,7 @@ description: "Comparativo completo entre Maçaranduba e Cumaru: densidade, resis
 pubDate: 2026-08-19
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Tipos de Madeira"
+category: "Madeiras e Estruturas"
 tags: ["maçaranduba", "cumaru", "deck de madeira", "pergolado", "comparativo madeira"]
 image: "/images/products/madeiras/deck-cumaru.png"
 imageAlt: "Pranchas de deck de cumaru e maçaranduba aparelhadas para áreas de lazer e piscina"

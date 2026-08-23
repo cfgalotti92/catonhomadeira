@@ -4,7 +4,7 @@ description: "Compreenda a hierarquia estrutural de um telhado colonial: medidas
 pubDate: 2026-08-21
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Madeiras e Telhados"
+category: "Madeiras e Estruturas"
 tags: ["viga de madeira", "caibro", "ripa", "estrutura de telhado", "carpintaria"]
 image: "/images/products/madeiras/caibro-macaranduba.png"
 imageAlt: "Caibros e vigas de madeira de lei para estrutura de sustentação de telhados"

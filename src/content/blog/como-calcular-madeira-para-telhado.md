@@ -4,7 +4,7 @@ description: "Aprenda a calcular vigas, caibros e ripas de madeira para seu telh
 pubDate: 2026-08-17
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Construção e Dicas"
+category: "Madeiras e Estruturas"
 tags: ["calcular madeira telhado", "caibro por metro", "galga de ripa", "lista de materiais", "obra civil"]
 image: "/images/products/madeiras/viga-macaranduba-bruta.jpg"
 imageAlt: "Madeiramento estrutural medido e separado para armação de telhado residencial"

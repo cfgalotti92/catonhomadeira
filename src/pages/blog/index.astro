@@ -8,12 +8,18 @@ import { getCollection } from 'astro:content';
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const categories = Array.from(new Set(allPosts.map((post) => post.data.category)));
+// Categorias únicas ordenadas com contagem
+const categories = Array.from(new Set(allPosts.map((post) => post.data.category))).sort();
+const categoryCounts: Record<string, number> = {};
+allPosts.forEach((post) => {
+  const cat = post.data.category;
+  categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+});
 ---
 
 <BaseLayout
   title="Blog e Dicas Técnicas de Construção e Madeiras"
-  description="Artigos especializados sobre madeira para telhado, espécies de madeira de lei, cálculo de materiais, telhas cerâmicas, esquadrias e churrasqueiras no RJ."
+  description="Guias e artigos especializados sobre madeira para telhado, espécies nobres, cálculo de materiais, telhas coloniais, portas maciças e churrasqueiras no RJ."
 >
   <Breadcrumbs items={[{ label: 'Blog & Dicas Técnicas' }]} />
 
@@ -26,21 +32,43 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
         Guias práticos, comparativos de espécies e orientações técnicas de carpintaria e coberturas preparados pela equipe com mais de 35 anos de tradição em Jacarepaguá.
       </p>
 
-      <!-- Category Filter Pills -->
-      <div class="category-pills">
-        <span class="pill-label">Categorias:</span>
-        <span class="pill is-active">Todos os Artigos ({allPosts.length})</span>
-        {categories.map((cat) => (
-          <span class="pill">{cat}</span>
-        ))}
+      <!-- Interactive Category Filter Pills -->
+      <div class="category-filter-wrap" role="toolbar" aria-label="Filtrar artigos por categoria">
+        <span class="filter-label">Categorias:</span>
+        <div class="category-pills-list">
+          <button
+            type="button"
+            class="category-btn is-active"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            Todos os Artigos <span class="count-badge">({allPosts.length})</span>
+          </button>
+
+          {categories.map((cat) => (
+            <button
+              type="button"
+              class="category-btn"
+              data-filter={cat}
+              aria-pressed="false"
+            >
+              {cat} <span class="count-badge">({categoryCounts[cat]})</span>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Blog Grid -->
+  <!-- Blog Grid Section -->
   <section class="blog-grid-section">
     <div class="container">
-      <div class="blog-posts-grid">
+      <div class="filter-status-bar" id="filter-status-bar" style="display: none;">
+        <span id="filter-status-text">Exibindo artigos da categoria: <strong></strong></span>
+        <button type="button" id="clear-filter-btn" class="btn-clear-filter">Limpar Filtro ✕</button>
+      </div>
+
+      <div class="blog-posts-grid" id="blog-posts-grid">
         {sortedPosts.map((post) => (
           <BlogCard
             title={post.data.title}
@@ -54,6 +82,12 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
           />
         ))}
       </div>
+
+      <!-- Empty state when 0 articles match -->
+      <div id="no-articles-found" class="no-articles-card" style="display: none;">
+        <p>Nenhum artigo encontrado nesta categoria.</p>
+        <button type="button" class="btn btn-secondary" onclick="window.resetBlogFilter()">Ver Todos os Artigos</button>
+      </div>
     </div>
   </section>
 
@@ -64,6 +98,102 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
     buttonText="Tirar Dúvidas com Especialista"
     defaultMessage="Olá! Estava lendo o blog da Catonho Madeiras e gostaria de tirar uma dúvida sobre materiais para minha obra."
   />
+
+  <!-- Client-side Fast Filter Script -->
+  <script is:inline>
+    (function () {
+      function initBlogFilter() {
+        const buttons = document.querySelectorAll('.category-btn');
+        const cards = document.querySelectorAll('.blog-card');
+        const statusBar = document.getElementById('filter-status-bar');
+        const statusText = document.getElementById('filter-status-text');
+        const clearBtn = document.getElementById('clear-filter-btn');
+        const emptyState = document.getElementById('no-articles-found');
+        const grid = document.getElementById('blog-posts-grid');
+
+        if (!buttons.length || !cards.length) return;
+
+        function applyFilter(category, updateUrl) {
+          let visibleCount = 0;
+
+          buttons.forEach((btn) => {
+            const isMatch = btn.getAttribute('data-filter') === category;
+            btn.classList.toggle('is-active', isMatch);
+            btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+          });
+
+          cards.forEach((card) => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = '';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (emptyState && grid) {
+            if (visibleCount === 0) {
+              emptyState.style.display = 'block';
+              grid.style.display = 'none';
+            } else {
+              emptyState.style.display = 'none';
+              grid.style.display = 'grid';
+            }
+          }
+
+          if (statusBar && statusText) {
+            if (category !== 'all') {
+              statusBar.style.display = 'flex';
+              statusText.innerHTML = 'Exibindo artigos de: <strong>' + category + '</strong> (' + visibleCount + ')';
+            } else {
+              statusBar.style.display = 'none';
+            }
+          }
+
+          if (updateUrl) {
+            const url = new URL(window.location.href);
+            if (category === 'all') {
+              url.searchParams.delete('categoria');
+            } else {
+              url.searchParams.set('categoria', category);
+            }
+            window.history.replaceState({}, '', url.toString());
+          }
+        }
+
+        window.resetBlogFilter = function () {
+          applyFilter('all', true);
+        };
+
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', function () {
+            const targetCat = this.getAttribute('data-filter');
+            applyFilter(targetCat, true);
+          });
+        });
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', function () {
+            applyFilter('all', true);
+          });
+        }
+
+        // Ler parâmetro da URL na carga inicial (?categoria=...)
+        const params = new URLSearchParams(window.location.search);
+        const initialCat = params.get('categoria');
+        if (initialCat) {
+          applyFilter(initialCat, false);
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBlogFilter);
+      } else {
+        initBlogFilter();
+      }
+    })();
+  </script>
 </BaseLayout>
 
 <style>
@@ -87,7 +217,22 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
     margin-bottom: var(--space-8);
   }
 
-  .category-pills {
+  .category-filter-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .filter-label {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ink-muted);
+  }
+
+  .category-pills-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -95,27 +240,72 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
     gap: var(--space-2);
   }
 
-  .pill-label {
+  .category-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    font-family: var(--font-body);
     font-size: var(--text-xs);
     font-weight: 600;
-    color: var(--color-ink-muted);
-  }
-
-  .pill {
-    padding: 6px 14px;
-    font-size: var(--text-xs);
-    font-weight: 500;
     border-radius: var(--radius-full);
     background-color: var(--color-paper-card);
-    border: 1px solid var(--color-border);
-    color: var(--color-ink-secondary);
+    border: 1.5px solid var(--color-border);
+    color: var(--color-ink-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
   }
 
-  .pill.is-active {
+  .category-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-1px);
+  }
+
+  .category-btn.is-active {
     background-color: var(--color-paper-dark);
     color: var(--color-ink-inverse);
     border-color: var(--color-paper-dark);
-    font-weight: 600;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .category-btn.is-active .count-badge {
+    color: oklch(0.85 0.01 75);
+  }
+
+  .count-badge {
+    font-size: 0.6875rem;
+    color: var(--color-ink-muted);
+    font-weight: 500;
+  }
+
+  /* Filter Status Bar */
+  .filter-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-6);
+    font-size: var(--text-sm);
+    color: var(--color-ink-primary);
+  }
+
+  .btn-clear-filter {
+    background: none;
+    border: none;
+    color: var(--color-accent);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: var(--radius-xs);
+  }
+
+  .btn-clear-filter:hover {
+    text-decoration: underline;
   }
 
   /* Grid */
@@ -139,5 +329,20 @@ const categories = Array.from(new Set(allPosts.map((post) => post.data.category)
     .blog-posts-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+  }
+
+  .no-articles-card {
+    text-align: center;
+    padding: var(--space-12);
+    background-color: var(--color-paper-card);
+    border: 1px dashed var(--color-border-strong);
+    border-radius: var(--radius-md);
+    margin-block: var(--space-8);
+  }
+
+  .no-articles-card p {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-4);
   }
 </style>

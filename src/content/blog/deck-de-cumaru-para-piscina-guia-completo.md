@@ -4,7 +4,7 @@ description: "Descubra por que o Cumaru é a madeira nobre mais indicada para de
 pubDate: 2026-08-22
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Pisos e Lazer"
+category: "Decks, Pergolados e Lazer"
 tags: ["deck de cumaru", "madeira para piscina", "pergolado cumaru", "manutencao deck", "madeira de lei rj"]
 image: "/images/products/madeiras/deck-cumaru.png"
 imageAlt: "Pranchas de deck de madeira nobre cumaru instaladas ao redor de piscina"

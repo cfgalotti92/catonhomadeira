@@ -4,7 +4,7 @@ description: "Guia completo de modelos de telha para coberturas residenciais: co
 pubDate: 2026-08-18
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Telhas e Coberturas"
+category: "Telhados e Coberturas"
 tags: ["tipos de telha", "telha colonial", "telha romana", "telha esmaltada", "rendimento telha m2"]
 image: "/images/products/telhas/telha-capa-e-bica.jpg"
 imageAlt: "Telhas cerâmicas de capa e bica e modelos esmaltados para coberturas"

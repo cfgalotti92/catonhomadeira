@@ -4,7 +4,7 @@ description: "Guia prático para projetar e construir pergolados de madeira nobr
 pubDate: 2026-08-22
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Áreas Externas e Lazer"
+category: "Decks, Pergolados e Lazer"
 tags: ["pergolado de madeira", "macaranduba para pergolado", "cumaru aparelhado", "cobertura pergolado", "madeira para area externa rj"]
 image: "/images/products/madeiras/painel-ripado.png"
 imageAlt: "Pergolado de madeira maciça aparelhado com acabamento nobre em jardim"

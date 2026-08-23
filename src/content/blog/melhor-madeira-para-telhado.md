@@ -4,7 +4,7 @@ description: "Descubra as espécies mais indicadas para estrutura de telhado, co
 pubDate: 2026-08-20
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Madeiras e Telhados"
+category: "Madeiras e Estruturas"
 tags: ["madeira para telhado", "maçaranduba", "cumaru", "estrutura de telhado", "vigas e caibros"]
 image: "/images/products/madeiras/viga-macaranduba-bruta.jpg"
 imageAlt: "Vigas de maçaranduba no pátio para estrutura de telhados residenciais e comerciais"

@@ -28,7 +28,7 @@ const formattedDate = new Intl.DateTimeFormat('pt-BR', {
 }).format(pubDate);
 ---
 
-<article class="blog-card" aria-label={`Artigo: ${title}`}>
+<article class="blog-card" data-category={category} aria-label={`Artigo: ${title}`}>
   <a href={`/blog/${slug}/`} class="blog-card-image-link" tabindex="-1" aria-hidden="true">
     <img
       src={image}

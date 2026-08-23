@@ -4,7 +4,7 @@ description: "Guia prático para montar sua churrasqueira pré-moldada em concre
 pubDate: 2026-08-14
 updatedDate: 2026-08-22
 author: "Equipe Técnica Catonho Madeiras"
-category: "Lazer e Churrasqueiras"
+category: "Decks, Pergolados e Lazer"
 tags: ["churrasqueira pre-moldada", "area gourmet", "primeira queima churrasqueira", "concreto refratario", "churrasqueira rj"]
 image: "/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png"
 imageAlt: "Churrasqueira pré-moldada em concreto refratário com acabamento tijolinho para área gourmet"
