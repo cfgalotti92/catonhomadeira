@@ -36,19 +36,12 @@ const fullTitle = currentPath === '/' ? title : `${title} | Catonho Madeiras`;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta charset="utf-8" />
 {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
 <link rel="canonical" href={fullCanonical} />
 
 <!-- Favicon & Icons -->
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/favicon.png" />
-
-<!-- Google Fonts: Montserrat (Headings) & Inter (Body) -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />

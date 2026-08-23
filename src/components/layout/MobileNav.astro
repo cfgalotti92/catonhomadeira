@@ -24,10 +24,10 @@ const isActive = (href: string) => {
 
 <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
 
-<aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Navegação Móvel" aria-hidden="true">
+<aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Navegação Móvel" aria-hidden="true" inert>
   <div class="drawer-header">
     <div class="drawer-brand">
-      <img src="/images/logo.png" alt="Logo Catonho Madeiras" width="38" height="38" class="drawer-logo-img" />
+      <img src="/images/logo-96.avif" alt="" width="38" height="38" class="drawer-logo-img" />
       <div class="drawer-brand-text">
         <span class="drawer-title">CATONHO MADEIRAS</span>
         <span class="drawer-subtitle">Jacarepaguá · Desde 1989</span>
@@ -126,6 +126,7 @@ const isActive = (href: string) => {
       if (!drawer || !backdrop || !toggle) return;
       drawer.classList.add('is-open');
       backdrop.classList.add('is-open');
+      drawer.removeAttribute('inert');
       drawer.setAttribute('aria-hidden', 'false');
       toggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
@@ -135,6 +136,7 @@ const isActive = (href: string) => {
       if (!drawer || !backdrop || !toggle) return;
       drawer.classList.remove('is-open');
       backdrop.classList.remove('is-open');
+      drawer.setAttribute('inert', '');
       drawer.setAttribute('aria-hidden', 'true');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
