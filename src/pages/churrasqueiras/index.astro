@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const grillProducts = [
+  {
+    name: 'Churrasqueira Pré-Moldada Tijolinho',
+    category: 'Churrasqueiras Pré-Moldadas',
+    speciesOrMaterial: 'Concreto Refratário',
+    finishOrType: 'Acabamento Textura Tijolinho Vermelho',
+    dimensions: 'Larguras de 65, 75 e 85 cm',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
+    imageAlt: 'Churrasqueira pré-moldada em concreto refratário estilo tijolinho',
+    badge: 'Mais Vendida'
+  },
+  {
+    name: 'Churrasqueira Pré-Moldada Predial',
+    category: 'Churrasqueiras Pré-Moldadas',
+    speciesOrMaterial: 'Concreto Refratário Reforçado',
+    finishOrType: 'Módulos para Dutos Altos / Prédios',
+    dimensions: 'Largura 80 cm / Altura sob medida',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-predial.png',
+    imageAlt: 'Churrasqueira pré-moldada predial com duto alto'
+  },
+  {
+    name: 'Churrasqueira Pré-Moldada com Bancada',
+    category: 'Churrasqueiras & Área Gourmet',
+    speciesOrMaterial: 'Concreto Refratário com Bancada Acoplada',
+    finishOrType: 'Módulo Duplo com Espaço para Pia',
+    dimensions: 'Largura Total 1,20 m a 1,60 m',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-com-bancada.png',
+    imageAlt: 'Churrasqueira pré-moldada com bancada lateral para área gourmet'
+  },
+  {
+    name: 'Churrasqueira Pré-Moldada Revestida',
+    category: 'Churrasqueiras & Área Gourmet',
+    speciesOrMaterial: 'Concreto Refratário Liso',
+    finishOrType: 'Preparada para Revestimento Porcelanato/Pedra',
+    dimensions: 'Largura 75 / 85 / 100 cm',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-revestida.png',
+    imageAlt: 'Churrasqueira pré-moldada lisa preparada para acabamento moderno'
+  }
+];
+
+const churrasqueirasFAQs = [
+  {
+    question: 'A churrasqueira pré-moldada já vem pronta para usar ou precisa de montagem?',
+    answer: 'A churrasqueira é entregue em módulos separados (base, caixa de fogo refratária, coifa e dutos de chaminé). A montagem é rápida e deve ser feita no local com argamassa refratária específica para suportar altas temperaturas.'
+  },
+  {
+    question: 'Como deve ser feita a primeira queima da churrasqueira?',
+    answer: 'Após a montagem, aguarde 72 horas para a secagem da argamassa. Em seguida, faça uma queima suave de adaptação (apenas com jornais ou gravetos) no primeiro dia, aumentando gradualmente a carga de carvão nos dias seguintes para curar o refratário sem trincas.'
+  },
+  {
+    question: 'Vocês vendem dutos prolongadores de chaminé para atravessar o telhado?',
+    answer: 'Sim! Fornecemos dutos adicionais de concreto ou chapéu metálico para elevar a chaminé acima da cumeeira do telhado, garantindo excelente tiragem de fumaça sem refluxo.'
+  }
+];
+---
+
+<BaseLayout
+  title="Churrasqueiras Pré-Moldadas em Jacarepaguá RJ"
+  description="Churrasqueiras pré-moldadas em concreto refratário, modelos tijolinho, predial e com bancada. Entrega rápida na Zona Oeste do Rio de Janeiro. Catonho Madeiras."
+>
+  <Breadcrumbs items={[{ label: 'Churrasqueiras Pré-Moldadas' }]} />
+
+  <!-- Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Área Gourmet & Lazer · Jacarepaguá</div>
+          <h1 class="cat-hero-title">Churrasqueiras Pré-Moldadas em Concreto Refratário no RJ</h1>
+          <p class="cat-hero-desc">
+            Praticidade e rapidez para a sua área de lazer. Churrasqueiras pré-moldadas em concreto refratário nos modelos tijolinho, liso para revestir, predial e opções com bancada lateral para pia.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20modelos%20e%20pre%C3%A7os%20de%20churrasqueiras%20pr%C3%A9-moldadas."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Orçar Churrasqueira no WhatsApp</span>
+            </a>
+            <a href="#catalogo-churrasqueiras" class="btn btn-secondary">Ver Modelos</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Vantagens do Pré-Moldado</h2>
+          <ul class="spec-box-list">
+            <li><strong>Montagem Ágil:</strong> Instalação em poucas horas sem semanas de obra.</li>
+            <li><strong>Concreto Refratário:</strong> Resistência comprovada a altas temperaturas.</li>
+            <li><strong>Módulos de Chaminé:</strong> Ajuste fácil à altura do seu telhado.</li>
+            <li><strong>Opção com Bancada:</strong> Espaço integrado para apoio e pia.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog -->
+  <section class="section-py" id="catalogo-churrasqueiras" aria-labelledby="catalog-grill-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-grill-heading" class="section-title">Modelos de Churrasqueiras</h2>
+        <p class="section-desc">
+          Módulos de alta densidade refratária com acabamento elegante para sua casa ou condomínio.
+        </p>
+      </div>
+
+      <ProductGrid columns={2}>
+        {grillProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Installation Guide Tip -->
+  <section class="guide-section section-py">
+    <div class="container container-narrow">
+      <div class="badge">Dica Técnica</div>
+      <h2 class="guide-title">Como Garantir a Máxima Vida Útil da sua Churrasqueira</h2>
+      <p class="guide-text">
+        O segredo para uma churrasqueira pré-moldada não trincar está no assentamento correto com argamassa refratária e na queima de cura gradual. Veja o passo a passo detalhado no artigo do nosso blog sobre <a href="/blog/churrasqueira-pre-moldada-instalacao-cuidados/">instalação de churrasqueiras pré-moldadas e primeira queima</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <WhatsAppCTA
+    title="Deseja combinar sua churrasqueira com deck ou pergolado de madeira?"
+    subtitle="Monte sua área gourmet completa com madeiras nobres de Cumaru e churrasqueira pré-moldada entregues juntas pela Catonho Madeiras."
+    buttonText="Cotar Área Gourmet no WhatsApp"
+    defaultMessage="Olá! Gostaria de consultar os modelos de churrasqueiras pré-moldadas e madeiras para área gourmet."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={churrasqueirasFAQs} title="Dúvidas Frequentes sobre Churrasqueiras" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+
+  /* Guide Section */
+  .guide-section {
+    background-color: var(--color-paper-card);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .guide-title {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-text {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    max-width: 650px;
+    margin-inline: auto;
+  }
+</style>

@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import QuoteCard from '../../components/ui/QuoteCard.astro';
+---
+
+<BaseLayout
+  title="Solicitar Orçamento de Madeiras e Telhas em Jacarepaguá RJ"
+  description="Envie sua lista de materiais para cotação rápida. Orçamento de vigas, caibros, telhas, portas e churrasqueiras pelo WhatsApp da Catonho Madeiras."
+>
+  <Breadcrumbs items={[{ label: 'Solicitar Orçamento' }]} />
+
+  <!-- Hero -->
+  <header class="quote-page-hero section-py">
+    <div class="container container-narrow text-center">
+      <div class="badge">Orçamento Ágil & Consultivo</div>
+      <h1 class="quote-page-title">Solicite a Cotação da sua Lista de Materiais</h1>
+      <p class="quote-page-lead">
+        Atendimento técnico especializado para construtores, marceneiros e proprietários. Envie as medidas do seu telhado, projeto de carpintaria ou relação de peças e receba o valor com frete para sua obra no Rio.
+      </p>
+    </div>
+  </header>
+
+  <!-- Quote Form & Steps Section -->
+  <section class="section-py quote-main-section">
+    <div class="container">
+      <div class="quote-layout-grid">
+        <!-- Form Column -->
+        <div class="quote-form-col">
+          <QuoteCard title="Preencha sua Lista de Cotação" />
+        </div>
+
+        <!-- Instructions Column -->
+        <div class="quote-info-col">
+          <div class="info-guide-box">
+            <h2 class="guide-box-title">Como agilizar o seu orçamento?</h2>
+            
+            <div class="guide-step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <strong>Para Madeiras de Telhado:</strong>
+                <p>Informe a quantidade de vigas (ex: 14x6 cm), caibros (ex: 6x3,5 cm) e ripas, além do acabamento desejado (bruto ou aparelhado).</p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <strong>Para Telhas Cerâmicas e Esmaltadas:</strong>
+                <p>Informe a área em m² da cobertura ou o modelo de telha escolhido (capa e bica, romana, portuguesa ou esmaltada).</p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <strong>Para Portas e Esquadrias:</strong>
+                <p>Indique as medidas dos vãos (largura x altura) e a espessura da parede para o cálculo correto dos caixonetes (aduelas).</p>
+              </div>
+            </div>
+
+            <div class="guide-step">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <strong>Endereço de Entrega:</strong>
+                <p>Informe o bairro da obra no Rio de Janeiro para que possamos calcular o valor do frete e o prazo de descarga.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="direct-contact-box">
+            <h3 class="direct-contact-title">Prefere ligar diretamente?</h3>
+            <p class="direct-contact-text">Nossos atendentes estão disponíveis nos telefones fixos do depósito:</p>
+            <div class="phone-buttons">
+              <a href="tel:2124351454" class="btn btn-secondary btn-sm">📞 (21) 2435-1454</a>
+              <a href="tel:2124234425" class="btn btn-secondary btn-sm">📞 (21) 2423-4425</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .quote-page-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .quote-page-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .quote-page-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .quote-page-lead {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Main Layout */
+  .quote-main-section {
+    background-color: var(--color-paper);
+  }
+
+  .quote-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 960px) {
+    .quote-layout-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .info-guide-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-box-title {
+    font-size: var(--text-xl);
+    margin-top: 0;
+    margin-bottom: var(--space-5);
+    color: var(--color-ink-primary);
+  }
+
+  .guide-step {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  .guide-step:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    border-radius: var(--radius-full);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-body strong {
+    font-size: var(--text-sm);
+    display: block;
+    color: var(--color-ink-primary);
+    margin-bottom: 2px;
+  }
+
+  .step-body p {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .direct-contact-box {
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+  }
+
+  .direct-contact-title {
+    font-size: var(--text-lg);
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+  }
+
+  .direct-contact-text {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .phone-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .btn-sm {
+    padding: 8px 12px;
+    font-size: var(--text-xs);
+  }
+</style>

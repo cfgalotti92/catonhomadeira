@@ -1,0 +1,1586 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latestPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+
+const categories = [
+  {
+    title: 'Madeiras para Telhado & Estrutura',
+    desc: 'Vigas, caibros, ripas, tábuas e sarrafos em Maçaranduba, Cumaru, Angelim e Tauari.',
+    href: '/madeiras/',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Vigas e caibros de maçaranduba no pátio da Catonho Madeiras'
+  },
+  {
+    title: 'Telhas & Coberturas',
+    desc: 'Telhas coloniais capa e bica (40 a 57cm), romanas, portuguesas e esmaltadas impermeabilizadas.',
+    href: '/telhas/',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telhas cerâmicas capa e bica para coberturas residenciais'
+  },
+  {
+    title: 'Portas de Madeira Maciça',
+    desc: 'Portas maciças de entrada, modelos pivotantes, portas frisadas e pranchetas para quartos.',
+    href: '/portas/',
+    image: '/images/products/portas/porta-macica-tauari-lambri.jpg',
+    imageAlt: 'Porta de madeira maciça Tauari em lambri diagonal'
+  },
+  {
+    title: 'Janelas Coloniais & Maxim-ar',
+    desc: 'Janelas de correr com veneziana e vidro, modelos em arco e módulos maxim-ar.',
+    href: '/janelas/',
+    image: '/images/products/janelas/janela-colonial-arco.jpg',
+    imageAlt: 'Janela de madeira colonial com arco e veneziana'
+  },
+  {
+    title: 'Ferragens & Conectores',
+    desc: 'Suportes ajustáveis para vigas de telhado, trilhos de correr, dobradiças reforçadas e parafusos.',
+    href: '/ferragens/',
+    image: '/images/products/ferragens/suporte-telhado-cobertura.jpg',
+    imageAlt: 'Suportes de aço galvanizado para fixação de vigas de telhado'
+  },
+  {
+    title: 'Fechaduras & Puxadores',
+    desc: 'Fechaduras de segurança com roseta, cilindro e puxadores em aço inox para portas maciças.',
+    href: '/fechaduras/',
+    image: '/images/products/fechaduras/fechadura-externa-roseta.jpg',
+    imageAlt: 'Fechadura externa cromada com roseta de segurança'
+  },
+  {
+    title: 'Churrasqueiras Pré-Moldadas',
+    desc: 'Churrasqueiras em concreto refratário com acabamento tijolinho, dutos prolongadores e bancadas.',
+    href: '/churrasqueiras/',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
+    imageAlt: 'Churrasqueira pré-moldada refratária para área gourmet'
+  }
+];
+
+const importantPillars = [
+  {
+    title: 'Qualidade que você confia',
+    desc: 'Madeiras de lei rigorosamente selecionadas, com alinhamento reto, corte no esquadro e procedência legal certificada pelo DOF.'
+  },
+  {
+    title: 'Preço justo e competitivo',
+    desc: 'Preço direto de depósito com condições facilitadas para quem constrói ou reforma em Jacarepaguá e Zona Oeste do Rio.'
+  },
+  {
+    title: 'Atendimento que faz a diferença',
+    desc: 'Equipe técnica especializada em carpintaria para conferir medidas nominais, calcular quantitativos e evitar desperdício de material.'
+  },
+  {
+    title: 'Estoque a pronta entrega',
+    desc: 'Pátio com grande volume de vigas, caibros, tábuas e telhas disponíveis para pronta retirada no depósito ou despacho de caminhão.'
+  }
+];
+
+const technicalTips = [
+  {
+    title: 'Qual a melhor madeira para a estrutura do seu telhado?',
+    desc: 'A Maçaranduba e o Cumaru lideram em durabilidade e resistência contra cupins e umidade no clima do Rio.',
+    tag: 'Estrutura & Telhado'
+  },
+  {
+    title: 'Como calcular o espaçamento correto entre caibros e ripas?',
+    desc: 'O distanciamento entre caibros (40 a 50cm) e a galga da ripa garantem que a cobertura não envergue com as chuvas.',
+    tag: 'Carpintaria Prática'
+  },
+  {
+    title: 'Primeira queima de churrasqueira pré-moldada refratária',
+    desc: 'Aguarde 72h após o assentamento e faça uma queima gradual para curar a argamassa sem fissuras.',
+    tag: 'Lazer & Área Gourmet'
+  }
+];
+
+const testimonials = [
+  {
+    name: 'Carlos Eduardo Silveira',
+    role: 'Construtor Civil · Jacarepaguá',
+    text: 'Já fiz diversas obras no Rio e sempre fui muito bem atendido na Catonho Madeiras. Entrega rápida, madeiras retas e de primeira qualidade. Recomendo a todos!',
+    stars: 5
+  },
+  {
+    name: 'Júlia Miles',
+    role: 'Proprietária Residencial · Barra da Tijuca',
+    text: 'Comprei todas as telhas e vigas de maçaranduba para a cobertura da minha casa na Catonho Madeiras. Muita variedade, preço justo e o atendimento no WhatsApp foi impecável.',
+    stars: 5
+  },
+  {
+    name: 'Marcelo Moura',
+    role: 'Marceneiro & Carpinteiro · Recreio',
+    text: 'Estacionamento próprio, pátio amplo, preço super competitivo e um atendimento técnico excelente na loja de Jacarepaguá. Facilitam muito o dia a dia de quem trabalha com obra.',
+    stars: 5
+  }
+];
+
+const localPhotos = [
+  {
+    title: 'Fachada da Loja & Depósito',
+    subtitle: 'Estrada do Catonho, 1205 — Jacarepaguá',
+    image: '/images/empresa/catonho-madeiras-loja-fachada.jpg',
+    imageAlt: 'Fachada da loja e pátio da Catonho Madeiras em Jacarepaguá'
+  },
+  {
+    title: 'Vigas e Madeiramento Estrutural',
+    subtitle: 'Maçaranduba, Cumaru e Paraju selecionados',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Vigas de maçaranduba e madeiramento para telhados'
+  },
+  {
+    title: 'Telhas & Coberturas Coloniais',
+    subtitle: 'Capa e bica cerâmicas e esmaltadas',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telhas cerâmicas capa e bica para telhados coloniais'
+  },
+  {
+    title: 'Fundação Histórica (1989)',
+    subtitle: 'Mais de 35 anos de tradição na Estrada do Catonho',
+    image: '/images/empresa/catonho-madeiras-primordios-1989.jpg',
+    imageAlt: 'Registro histórico da fundação da Catonho Madeiras em 1989'
+  }
+];
+---
+
+<BaseLayout
+  title="Madeireira em Jacarepaguá RJ · Catonho Madeiras desde 1989"
+  description="Madeireira tradicional na Estrada do Catonho, 1205. Madeiras de lei para telhado (Maçaranduba, Cumaru, Angelim), telhas cerâmicas, portas maciças e churrasqueiras com entrega rápida no Rio."
+>
+  <!-- 1. Hero Section Ampliada & Transparente -->
+  <section class="classic-hero">
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badges">
+          <div class="hero-badge-item badge-location">
+            <svg class="hero-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div class="badge-text">
+              <span class="badge-sub">Estrada do Catonho, 1205</span>
+              <strong class="badge-main">JACAREPAGUÁ · RJ</strong>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5521979011647" target="_blank" rel="noopener noreferrer" class="hero-badge-item badge-whatsapp">
+            <svg class="hero-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+            </svg>
+            <div class="badge-text">
+              <span class="badge-sub">WhatsApp Comercial</span>
+              <strong class="badge-main">(21) 97901-1647</strong>
+            </div>
+          </a>
+        </div>
+
+        <h1 class="hero-title">Madeireira em Jacarepaguá</h1>
+        
+        <p class="hero-lead">
+          Fornecimento de madeiras nobres de lei para telhados e estruturas, telhas cerâmicas e esmaltadas, portas maciças, ferragens e churrasqueiras com entrega rápida e frota própria no Rio de Janeiro.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="https://wa.me/5521979011647?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20madeiras%20e%20telhas."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp btn-hero-primary"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+            </svg>
+            <span>Orçamento no WhatsApp</span>
+          </a>
+
+          <a href="#catalogo-produtos" class="btn btn-hero-secondary">
+            <span>Conhecer Produtos</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Galeria da Estrutura Física & Tradição -->
+  <section class="section-local-gallery">
+    <div class="container">
+      <div class="gallery-header-center">
+        <span class="section-kicker">Localização & Depósito Próprio</span>
+        <h2 class="section-heading">Nossa Estrutura na Estrada do Catonho, 1205</h2>
+        <p class="section-subtext">
+          Mais de 35 anos atendendo no mesmo ponto físico em Jacarepaguá. Conheça nossa loja, estoque e acervo de madeiras:
+        </p>
+      </div>
+
+      <div class="local-photos-grid">
+        {localPhotos.map((photo) => (
+          <div class="local-photo-card">
+            <div class="local-photo-wrap">
+              <img
+                src={photo.image}
+                alt={photo.imageAlt}
+                width="600"
+                height="400"
+                loading="lazy"
+                decoding="async"
+                class="local-photo-img"
+              />
+              <div class="local-photo-overlay">
+                <strong class="photo-title">{photo.title}</strong>
+                <span class="photo-sub">{photo.subtitle}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Propósito & Números Reais (Diptych Terracota Clássico) -->
+  <section class="section-manifesto">
+    <div class="container">
+      <div class="manifesto-grid">
+        <div class="manifesto-text-col">
+          <blockquote class="manifesto-quote">
+            "Construindo sonhos com qualidade e sustentabilidade, uma madeira de cada vez."
+          </blockquote>
+          <p class="manifesto-paragraph">
+            A <strong>Catonho Madeiras</strong> é uma empresa especializada no comércio de madeiras de alta qualidade, oferecendo uma ampla variedade de produtos e soluções para construção civil, marcenaria e carpintaria. Com sólida reputação no mercado, nos destacamos pela excelência no atendimento ao cliente e pela entrega de materiais certificados e sustentáveis.
+          </p>
+          <div class="manifesto-author-line">
+            <span class="author-dot" aria-hidden="true"></span>
+            <span>Tradição no Rio de Janeiro · Pátio e Estoque na Estrada do Catonho, 1205</span>
+          </div>
+        </div>
+
+        <div class="manifesto-numbers-col">
+          <div class="numbers-card">
+            <div class="numbers-header">
+              <span class="numbers-tag">ALGUNS DOS NOSSOS NÚMEROS</span>
+            </div>
+            <div class="numbers-grid">
+              <div class="number-item">
+                <span class="num-val">35+</span>
+                <span class="num-label">Anos de experiência</span>
+              </div>
+              <div class="number-item">
+                <span class="num-val">52k+</span>
+                <span class="num-label">Clientes atendidos</span>
+              </div>
+              <div class="number-item">
+                <span class="num-val">100%</span>
+                <span class="num-label">Madeiras com DOF</span>
+              </div>
+              <div class="number-item">
+                <span class="num-val">200+</span>
+                <span class="num-label">Variedade de Itens</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. O que é realmente importante (Pilares & Checklist Interativo) -->
+  <section class="section-pillars">
+    <div class="container">
+      <div class="pillars-layout-grid">
+        <!-- Visual / Diagrama à Esquerda -->
+        <div class="pillars-visual-col">
+          <div class="pillars-card-art">
+            <div class="art-badge">Qualidade Garantida</div>
+            <div class="art-isometric-diagram">
+              <svg width="220" height="200" viewBox="0 0 240 220" fill="none" aria-hidden="true">
+                <!-- Telhado Isométrico -->
+                <polygon points="120,20 220,70 120,120 20,70" fill="var(--color-paper-subtle)" stroke="var(--color-border-strong)" stroke-width="2"/>
+                <polygon points="120,20 120,120 20,70" fill="var(--color-accent-subtle)"/>
+                <!-- Vigas estruturais -->
+                <line x1="120" y1="20" x2="120" y2="120" stroke="var(--color-accent)" stroke-width="3"/>
+                <line x1="20" y1="70" x2="120" y2="120" stroke="var(--color-accent)" stroke-width="2"/>
+                <line x1="220" y1="70" x2="120" y2="120" stroke="var(--color-accent)" stroke-width="2"/>
+                <!-- Pilares de sustentação -->
+                <line x1="40" y1="80" x2="40" y2="190" stroke="var(--color-ink-primary)" stroke-width="4"/>
+                <line x1="120" y1="120" x2="120" y2="210" stroke="var(--color-ink-primary)" stroke-width="4"/>
+                <line x1="200" y1="80" x2="200" y2="190" stroke="var(--color-ink-primary)" stroke-width="4"/>
+                <!-- Base -->
+                <polygon points="120,150 210,190 120,220 30,190" fill="var(--color-paper-muted)" stroke="var(--color-border)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="art-caption">
+              Estruturas de madeira de lei selecionadas para máxima rigidez mecânica e durabilidade.
+            </p>
+          </div>
+        </div>
+
+        <!-- Checklist de Pilares à Direita -->
+        <div class="pillars-content-col">
+          <span class="section-kicker">Compromisso Catonho</span>
+          <h2 class="section-heading">O que é realmente importante:</h2>
+          <p class="section-subtext">Clique nos pilares para entender como cuidamos de cada etapa do seu fornecimento:</p>
+
+          <div class="pillars-checklist">
+            {importantPillars.map((p, idx) => (
+              <details class="pillar-pill" open={idx === 0}>
+                <summary class="pillar-summary">
+                  <span class="pillar-dot"></span>
+                  <span class="pillar-title">{p.title}</span>
+                  <span class="pillar-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="pillar-body">
+                  <p>{p.desc}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Primeira Qualidade — Catálogo de Produtos Espaçoso -->
+  <section class="section-catalog" id="catalogo-produtos">
+    <div class="container">
+      <div class="catalog-heading-center">
+        <span class="section-kicker">Estoque & Variedade</span>
+        <h2 class="section-heading">Primeira Qualidade</h2>
+        <p class="section-subtext">
+          Os produtos que vendemos na Catonho Madeiras são sinônimo de qualidade incomparável. Cada item atende aos mais altos padrões de exigência do mercado.
+        </p>
+      </div>
+
+      <div class="catalog-grid">
+        {categories.map((cat) => (
+          <article class="product-item-card">
+            <a href={cat.href} class="card-img-link">
+              <img
+                src={cat.image}
+                alt={cat.imageAlt}
+                width="380"
+                height="240"
+                loading="lazy"
+                decoding="async"
+                class="card-img"
+              />
+            </a>
+            <div class="card-info">
+              <h3 class="card-title">
+                <a href={cat.href}>{cat.title}</a>
+              </h3>
+              <p class="card-desc">{cat.desc}</p>
+              <a href={cat.href} class="card-action-link">
+                <span>Ver opções e bitolas</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Dicas Práticas -->
+  <section class="section-tips">
+    <div class="container">
+      <div class="tips-header-center">
+        <span class="section-kicker">Conteúdo & Aprendizado</span>
+        <h2 class="section-heading">Dicas Práticas para sua Obra</h2>
+        <p class="section-subtext">
+          A Catonho Madeiras e seus parceiros estarão sempre aqui com super dicas para facilitar sua vida e garantir a melhor execução no canteiro.
+        </p>
+      </div>
+
+      <div class="tips-grid">
+        {technicalTips.map((tip) => (
+          <article class="tip-card">
+            <div class="tip-tag">{tip.tag}</div>
+            <h3 class="tip-title">{tip.title}</h3>
+            <p class="tip-desc">{tip.desc}</p>
+            <a
+              href={`https://wa.me/5521979011647?text=${encodeURIComponent('Olá! Vi a dica sobre "' + tip.title + '" e gostaria de tirar uma dúvida.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="tip-link"
+            >
+              <span>Tirar Dúvida com Especialista</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Selo de Avaliações Google (Isolado e Centralizado) -->
+  <section class="section-google-reviews" aria-label="Avaliações no Google">
+    <div class="container">
+      <div class="google-badge-card">
+        <div class="google-badge-top">
+          <div class="google-icon-circle" aria-hidden="true">
+            <svg width="32" height="32" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+          </div>
+          <div class="google-badge-score">
+            <span class="score-val">4.9</span>
+            <div class="stars-gold" aria-label="Avaliação 4.9 de 5 estrelas">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="google-badge-content">
+          <h2 class="google-badge-headline">Mais de 100 avaliações 5 estrelas no Google</h2>
+          <p class="google-badge-desc">
+            Reconhecida no Rio de Janeiro pela pontualidade de entrega, qualidade das madeiras de lei selecionadas e atendimento especializado na Estrada do Catonho, 1205.
+          </p>
+        </div>
+
+        <div class="google-badge-action">
+          <a
+            href="https://maps.google.com/?q=Catonho+Madeiras+Estrada+do+Catonho+1205"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-google-maps"
+          >
+            <span>Ver perfil no Google Avaliações</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Fale Conosco Direto (Sem Formulário) -->
+  <section class="section-contact-quick" id="fale-conosco">
+    <div class="container">
+      <div class="contact-direct-box">
+        <div class="contact-direct-header text-center">
+          <span class="section-kicker">Atendimento Imediato</span>
+          <h2 class="section-heading">Fale Diretamente com Nossos Especialistas</h2>
+          <p class="section-subtext">
+            Sem burocracia ou formulários lentos: envie sua lista de materiais por foto, texto ou áudio diretamente no WhatsApp, ou ligue para nossos telefones fixos.
+          </p>
+        </div>
+
+        <div class="contact-action-cards-grid">
+          <!-- WhatsApp Card -->
+          <div class="action-card action-card-whatsapp">
+            <div class="action-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+            </div>
+            <h3 class="action-card-title">WhatsApp Comercial</h3>
+            <p class="action-card-desc">Tire fotos da lista de madeira ou envie suas medidas para cotação em minutos.</p>
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20materiais."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp btn-action-full"
+            >
+              <span>Chamar (21) 97901-1647</span>
+            </a>
+          </div>
+
+          <!-- Telefones Fixos Card -->
+          <div class="action-card">
+            <div class="action-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <h3 class="action-card-title">Telefones Fixos da Loja</h3>
+            <p class="action-card-desc">Fale com os vendedores diretamente no balcão do depósito em Jacarepaguá.</p>
+            <div class="phones-button-group">
+              <a href="tel:2124351454" class="btn btn-secondary btn-action-sm">📞 (21) 2435-1454</a>
+              <a href="tel:2124234425" class="btn btn-secondary btn-action-sm">📞 (21) 2423-4425</a>
+            </div>
+          </div>
+
+          <!-- Endereço & Visita Card -->
+          <div class="action-card">
+            <div class="action-card-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <h3 class="action-card-title">Visite Nosso Pátio</h3>
+            <p class="action-card-desc">Estrada do Catonho, 1205 — Tanque / Jacarepaguá, RJ (Estacionamento no local).</p>
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Estrada+do+Catonho+1205+Jacarepagua+Rio+de+Janeiro+RJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary btn-action-full"
+            >
+              <span>Abrir Rota no Google Maps</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Destaques do Blog -->
+  {latestPosts.length > 0 && (
+    <section class="section-blog-posts">
+      <div class="container">
+        <div class="blog-section-header">
+          <div>
+            <span class="section-kicker">Guia Técnico & Dicas</span>
+            <h2 class="section-heading">Artigos Recentes para sua Obra</h2>
+          </div>
+          <a href="/blog/" class="btn btn-outline btn-sm">Ver Todos os Artigos →</a>
+        </div>
+
+        <div class="blog-posts-grid">
+          {latestPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.id}
+              pubDate={post.data.pubDate}
+              category={post.data.category}
+              image={post.data.image}
+              imageAlt={post.data.imageAlt}
+              readingTime={post.data.readingTime}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  /* Banner de Comparação de Versões */
+  .version-banner {
+    background-color: var(--color-paper-dark);
+    color: #fff;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    border-bottom: 1px solid var(--color-accent);
+  }
+
+  .version-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    color: #fff;
+  }
+
+  .version-banner-inner strong {
+    color: var(--color-accent);
+  }
+
+  .version-switch-btn {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 3px 10px;
+    border-radius: var(--radius-xs);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .version-switch-btn:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* ==========================================================================
+     1. Hero Section Ampliada & Transparente com a Imagem Original de Madeiras
+     ========================================================================== */
+  .classic-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: clamp(6rem, 12vh, 10rem);
+    padding-bottom: clamp(6rem, 12vh, 10rem);
+    background-color: var(--color-paper-dark);
+    color: #ffffff;
+    background-image: linear-gradient(180deg, rgba(16, 12, 8, 0.72) 0%, rgba(16, 12, 8, 0.84) 100%), url('/images/products/madeiras/viga-macaranduba-bruta.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid var(--color-border-hairline);
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(18, 14, 10, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-lg);
+    padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    letter-spacing: 0.08em;
+  }
+
+  .hero-badge-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 8px 18px;
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    text-decoration: none;
+    line-height: 1.2;
+    color: #ffffff !important;
+    transition: transform var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .hero-badge-item * {
+    color: #ffffff !important;
+  }
+
+  .hero-badge-icon {
+    color: #ffffff !important;
+    flex-shrink: 0;
+  }
+
+  .badge-location {
+    background-color: rgba(25, 18, 12, 0.75) !important;
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .badge-whatsapp {
+    background-color: var(--color-whatsapp) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+
+  .badge-whatsapp:hover {
+    background-color: var(--color-whatsapp-hover) !important;
+    transform: translateY(-1px);
+  }
+
+  .badge-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #ffffff !important;
+  }
+
+  .badge-sub {
+    font-size: 0.6875rem;
+    color: oklch(0.92 0.01 75) !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.95;
+  }
+
+  .badge-main {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ffffff !important;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: clamp(2.25rem, 2rem + 1.8vw, 3.85rem);
+    line-height: 1.12;
+    color: #ffffff !important;
+    margin: 0 0 var(--space-4) 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-lead {
+    font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+    color: oklch(0.94 0.01 75) !important;
+    line-height: 1.7;
+    letter-spacing: 0.025em;
+    margin: 0 auto var(--space-8) auto;
+    max-width: 68ch;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .btn-hero-primary {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 30px;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  }
+
+  .btn-hero-primary * {
+    color: #ffffff !important;
+  }
+
+  .btn-hero-secondary {
+    background-color: rgba(25, 18, 12, 0.7) !important;
+    color: #ffffff !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
+    padding: 15px 26px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .btn-hero-secondary * {
+    color: #ffffff !important;
+  }
+
+  .btn-hero-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* ==========================================================================
+     2. Galeria da Estrutura Física & Tradição
+     ========================================================================== */
+  .section-local-gallery {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .gallery-header-center {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .local-photos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .local-photos-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .local-photos-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .local-photo-card {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .local-photo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .local-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-paper-muted);
+  }
+
+  .local-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .local-photo-card:hover .local-photo-img {
+    transform: scale(1.05);
+  }
+
+  .local-photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(16, 12, 8, 0.88));
+    color: #fff;
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .photo-title {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .photo-sub {
+    font-size: 0.6875rem;
+    color: oklch(0.9 0.02 80);
+  }
+
+  /* ==========================================================================
+     3. Seção Manifesto & Números (Diptych)
+     ========================================================================== */
+  .section-manifesto {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border-hairline);
+  }
+
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .manifesto-grid {
+      grid-template-columns: 1.25fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+
+  .manifesto-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 1.2rem + 0.6vw, 1.85rem);
+    line-height: 1.25;
+    color: var(--color-ink-primary);
+    margin: 0 0 var(--space-4) 0;
+    border-left: 3px solid var(--color-accent);
+    padding-left: var(--space-4);
+  }
+
+  .manifesto-paragraph {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: 1.65;
+    margin: 0 0 var(--space-4) 0;
+  }
+
+  .manifesto-author-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+    font-weight: 600;
+  }
+
+  .author-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+  }
+
+  .numbers-card {
+    background-color: var(--color-accent);
+    color: #fff;
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-card);
+  }
+
+  .numbers-header {
+    margin-bottom: var(--space-6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: var(--space-2);
+  }
+
+  .numbers-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: oklch(0.95 0.02 80);
+  }
+
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  .number-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .num-val {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.8rem + 1vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: var(--space-1);
+  }
+
+  .num-label {
+    font-size: 0.8125rem;
+    color: oklch(0.95 0.02 80);
+    line-height: 1.3;
+  }
+
+  /* ==========================================================================
+     4. Pilares de Qualidade & Checklist
+     ========================================================================== */
+  .section-pillars {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pillars-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .pillars-layout-grid {
+      grid-template-columns: 1fr 1.3fr;
+      gap: var(--space-12);
+    }
+  }
+
+  .pillars-card-art {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    text-align: center;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .art-badge {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+    margin-bottom: var(--space-4);
+  }
+
+  .art-isometric-diagram {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .art-caption {
+    font-size: var(--text-sm);
+    color: var(--color-ink-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .section-kicker {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-1);
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.35rem);
+    color: var(--color-ink-primary);
+    line-height: 1.2;
+    margin: 0 0 var(--space-2) 0;
+    letter-spacing: -0.01em;
+  }
+
+  .section-subtext {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: 1.6;
+    margin: 0 0 var(--space-6) 0;
+    max-width: 65ch;
+  }
+
+  .pillars-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .pillar-pill {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+  }
+
+  .pillar-pill[open] {
+    border-color: var(--color-accent);
+  }
+
+  .pillar-summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--color-ink-primary);
+  }
+
+  .pillar-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .pillar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .pillar-title {
+    flex: 1;
+  }
+
+  .pillar-toggle {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .pillar-body {
+    padding: 0 var(--space-4) var(--space-4) calc(var(--space-4) + 8px + var(--space-3));
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+  }
+
+  .pillar-body p {
+    margin: 0;
+  }
+
+  /* ==========================================================================
+     5. Primeira Qualidade — Catálogo
+     ========================================================================== */
+  .section-catalog {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper-subtle);
+  }
+
+  .catalog-heading-center {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .catalog-heading-center .section-subtext {
+    margin-inline: auto;
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 640px) {
+    .catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .catalog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .product-item-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .product-item-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-img-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-paper-muted);
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .product-item-card:hover .card-img {
+    transform: scale(1.04);
+  }
+
+  .card-info {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .card-title a {
+    color: var(--color-ink-primary);
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    color: var(--color-accent);
+  }
+
+  .card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin: 0 0 var(--space-4) 0;
+    flex: 1;
+  }
+
+  .card-action-link {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+  }
+
+  .card-action-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ==========================================================================
+     6. Dicas Práticas
+     ========================================================================== */
+  .section-tips {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tips-header-center {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .tips-header-center .section-subtext {
+    margin-inline: auto;
+  }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .tips-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tip-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .tip-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .tip-title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--color-ink-primary);
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .tip-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin: 0 0 var(--space-4) 0;
+    flex: 1;
+  }
+
+  .tip-link {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .tip-link:hover {
+    text-decoration: underline;
+  }
+
+  /* ==========================================================================
+     7. Selo de Avaliações Google (Isolado e Centralizado)
+     ========================================================================== */
+  .section-google-reviews {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper-subtle);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .google-badge-card {
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: var(--color-paper-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .google-badge-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+
+  .google-icon-circle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .google-badge-score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .score-val {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-ink-primary);
+  }
+
+  .stars-gold {
+    color: #fbbc04;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .google-badge-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .google-badge-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+    font-weight: 700;
+    color: var(--color-ink-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .google-badge-sub {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    max-width: 52ch;
+    margin: 0 auto;
+  }
+
+  .btn-google-maps {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: #1a73e8;
+    background-color: #e8f0fe;
+    border: 1px solid #d2e3fc;
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .btn-google-maps:hover {
+    background-color: #1a73e8;
+    color: #ffffff;
+  }
+
+  /* ==========================================================================
+     8. Fale Conosco Direto (Sem Formulário)
+     ========================================================================== */
+  .section-contact-quick {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-direct-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .contact-direct-header .section-subtext {
+    margin-inline: auto;
+  }
+
+  .contact-action-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .contact-action-cards-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .action-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .action-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+
+  .action-card-whatsapp {
+    border-color: rgba(37, 211, 102, 0.4);
+    background-color: var(--color-whatsapp-surface);
+  }
+
+  .action-card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-paper-subtle);
+    color: var(--color-ink-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .action-card-whatsapp .action-card-icon {
+    background-color: var(--color-whatsapp);
+    color: #fff;
+  }
+
+  .action-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin: 0 0 var(--space-2) 0;
+    color: var(--color-ink-primary);
+  }
+
+  .action-card-desc {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin: 0 0 var(--space-6) 0;
+    flex: 1;
+  }
+
+  .btn-action-full {
+    width: 100%;
+    justify-content: center;
+    padding-block: 12px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .phones-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+  }
+
+  .btn-action-sm {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    font-size: var(--text-xs);
+    font-weight: 600;
+  }
+
+  /* ==========================================================================
+     9. Destaques do Blog
+     ========================================================================== */
+  .section-blog-posts {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+    background-color: var(--color-paper-subtle);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .blog-section-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+
+  @media (min-width: 640px) {
+    .blog-section-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+  }
+
+  .blog-posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .blog-posts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

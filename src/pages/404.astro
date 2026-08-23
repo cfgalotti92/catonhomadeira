@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/ui/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Página Não Encontrada (404) · Catonho Madeiras"
+  description="A página que você está procurando não foi encontrada ou foi movida. Acesse nosso catálogo de madeiras, telhas e esquadrias ou entre em contato."
+  noindex={true}
+>
+  <Breadcrumbs items={[{ label: 'Página Não Encontrada' }]} />
+
+  <section class="error-page-section section-py">
+    <div class="container container-narrow text-center">
+      <div class="error-badge">Erro 404</div>
+      <h1 class="error-title">Página Não Encontrada</h1>
+      <p class="error-lead">
+        O link que você acessou pode ter sido alterado ou não existe mais. Use os atalhos abaixo para navegar pelas nossas principais categorias de madeiras, telhas e serviços:
+      </p>
+
+      <div class="error-nav-grid">
+        <a href="/" class="error-nav-card">
+          <span class="card-icon">🏠</span>
+          <strong>Página Inicial</strong>
+          <span>Voltar para o início</span>
+        </a>
+        <a href="/madeiras/" class="error-nav-card">
+          <span class="card-icon">🌲</span>
+          <strong>Madeiras & Vigas</strong>
+          <span>Maçaranduba, Cumaru, Tauari</span>
+        </a>
+        <a href="/telhas/" class="error-nav-card">
+          <span class="card-icon">🏛️</span>
+          <strong>Telhas & Coberturas</strong>
+          <span>Capa e Bica, Esmaltadas</span>
+        </a>
+        <a href="/portas/" class="error-nav-card">
+          <span class="card-icon">🚪</span>
+          <strong>Portas de Madeira</strong>
+          <span>Maciças, Frisadas, Aduelas</span>
+        </a>
+        <a href="/churrasqueiras/" class="error-nav-card">
+          <span class="card-icon">🔥</span>
+          <strong>Churrasqueiras</strong>
+          <span>Kits pré-moldados refratários</span>
+        </a>
+        <a href="/blog/" class="error-nav-card">
+          <span class="card-icon">📖</span>
+          <strong>Blog & Dicas</strong>
+          <span>Guias técnicos de cobertura</span>
+        </a>
+      </div>
+
+      <div class="error-actions">
+        <a
+          href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20encontrar%20um%20produto%20no%20site."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-whatsapp"
+        >
+          <span>Falar com Atendente no WhatsApp</span>
+        </a>
+        <a href="/orcamento/" class="btn btn-secondary">
+          <span>Solicitar Orçamento</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .error-page-section {
+    padding-block: var(--space-16);
+    background-color: var(--color-paper);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .error-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-4);
+  }
+
+  .error-title {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-tight);
+    margin-top: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .error-lead {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 600px;
+    margin-inline: auto;
+    margin-bottom: var(--space-10);
+  }
+
+  .error-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    text-align: left;
+    margin-bottom: var(--space-10);
+  }
+
+  @media (min-width: 640px) {
+    .error-nav-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .error-nav-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .error-nav-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-5);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .error-nav-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  .error-nav-card strong {
+    font-size: var(--text-sm);
+    color: var(--color-ink-primary);
+  }
+
+  .error-nav-card span {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+  }
+
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+</style>

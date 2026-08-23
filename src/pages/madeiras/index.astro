@@ -1,0 +1,386 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const woodProducts = [
+  {
+    name: 'Viga de Maçaranduba Bruta',
+    category: 'Madeiras Estruturais',
+    speciesOrMaterial: 'Maçaranduba (Paraju)',
+    finishOrType: 'Serrada Bruta',
+    dimensions: '14x6 cm / 15x5 cm / 20x7 cm (vãos até 7m)',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Vigas de maçaranduba bruta para telhados e estruturas pesadas',
+    badge: 'Mais Vendido'
+  },
+  {
+    name: 'Coluna / Bloco de Maçaranduba Aparelhado',
+    category: 'Colunas & Pilares',
+    speciesOrMaterial: 'Maçaranduba de Lei',
+    finishOrType: 'Aparelhado 4 Lados',
+    dimensions: '14x14 cm / 15x15 cm / 20x20 cm',
+    image: '/images/products/madeiras/bloco-macaranduba-aparelhado.png',
+    imageAlt: 'Coluna de maçaranduba aparelhada para sustentação e pergolados'
+  },
+  {
+    name: 'Caibro de Maçaranduba',
+    category: 'Madeiras para Telhado',
+    speciesOrMaterial: 'Maçaranduba',
+    finishOrType: 'Bruto ou Aparelhado',
+    dimensions: '6x3,5 cm / 5x5 cm / 6x6 cm',
+    image: '/images/products/madeiras/caibro-macaranduba.png',
+    imageAlt: 'Caibro de maçaranduba para caimento e armação de telhado'
+  },
+  {
+    name: 'Caibro de Paraju',
+    category: 'Madeiras para Telhado',
+    speciesOrMaterial: 'Paraju (Madeira de Alta Densidade)',
+    finishOrType: 'Serrado Bruto',
+    dimensions: '6x3,5 cm / 5x5 cm',
+    image: '/images/products/madeiras/caibro-paraju.png',
+    imageAlt: 'Caibro de paraju bruto para cobertura residencial'
+  },
+  {
+    name: 'Caibro de Paraju Aparelhado',
+    category: 'Madeiras para Telhado Aparente',
+    speciesOrMaterial: 'Paraju Selecionado',
+    finishOrType: 'Aplainado e Lixado',
+    dimensions: '5,5x3 cm (útil)',
+    image: '/images/products/madeiras/caibro-paraju-aparelhado.png',
+    imageAlt: 'Caibro de paraju aparelhado para varandas e garagens'
+  },
+  {
+    name: 'Deck de Cumaru Extra',
+    category: 'Decks & Áreas Externas',
+    speciesOrMaterial: 'Cumaru Nobre (Ipê-Champanhe)',
+    finishOrType: 'Aparelhado com Borda Arredondada',
+    dimensions: '10x2 cm / 14x2 cm',
+    image: '/images/products/madeiras/deck-cumaru.png',
+    imageAlt: 'Pranchas de deck de cumaru para piscina e varandas gourmet',
+    badge: 'Nobre'
+  },
+  {
+    name: 'Assoalho de Cumaru',
+    category: 'Pisos de Madeira Maciça',
+    speciesOrMaterial: 'Cumaru Extra',
+    finishOrType: 'Macho e Fêmea com Secagem em Estufa',
+    dimensions: '10x2 cm / 15x2 cm',
+    image: '/images/products/madeiras/assoalho-cumaru.png',
+    imageAlt: 'Tábuas de assoalho de madeira maciça cumaru'
+  },
+  {
+    name: 'Sarrafo de Pinus',
+    category: 'Formas & Marcenaria',
+    speciesOrMaterial: 'Pinus Seco',
+    finishOrType: 'Serrado',
+    dimensions: 'Larguras de 5, 10, 15, 20, 25 e 30 cm',
+    image: '/images/products/madeiras/sarrafo-pinus.jpg',
+    imageAlt: 'Sarrafos de pinus para caixaria, formas e marcenaria'
+  },
+  {
+    name: 'Caixonete / Aduela de Tauari',
+    category: 'Batentes & Esquadrias',
+    speciesOrMaterial: 'Tauari Maciço',
+    finishOrType: 'Aparelhado com Rebaixo de Porta',
+    dimensions: 'Largura 13 cm / 15 cm / 18 cm',
+    image: '/images/products/madeiras/caixonete-tauari.png',
+    imageAlt: 'Caixonete e aduela de tauari para instalação de portas'
+  },
+  {
+    name: 'Painel Ripado de Madeira',
+    category: 'Revestimentos & Decoração',
+    speciesOrMaterial: 'Madeira Nobre',
+    finishOrType: 'Ripas Aparelhadas com Alinhamento',
+    dimensions: 'Medidas sob consulta',
+    image: '/images/products/madeiras/painel-ripado.png',
+    imageAlt: 'Painel ripado decorativo em madeira nobre'
+  }
+];
+
+const madeirasFAQs = [
+  {
+    question: 'Qual espécie de madeira é mais indicada para o telhado da minha casa?',
+    answer: 'A Maçaranduba (ou Paraju) é a principal recomendação para o clima do Rio de Janeiro. Sua densidade superior a 1.000 kg/m³ garante altíssima resistência a cupins, não enverga com facilidade e suporta com segurança o peso de telhas cerâmicas e esmaltadas.'
+  },
+  {
+    question: 'Vocês realizam cortes de vigas e caibros sob medida?',
+    answer: 'Sim. Comercializamos peças nos comprimentos padrão de mercado (de 3,0 a 7,0 metros) e podemos ajustar os cortes de acordo com as medidas especificadas no seu projeto de carpintaria.'
+  },
+  {
+    question: 'Qual a diferença entre madeira bruta e aparelhada?',
+    answer: 'A madeira bruta é serrada e mantém a textura áspera, ideal para telhados com forro e estruturas embutidas. A madeira aparelhada passa por plainas que lixam e nivelam todas as 4 faces, sendo pronta para verniz em telhados aparentes, garagens e pergolados.'
+  },
+  {
+    question: 'Como faço para receber o orçamento das madeiras?',
+    answer: 'Basta clicar no botão de WhatsApp nesta página e enviar sua lista de peças (quantidade, bitola, comprimento e acabamento desejado). Retornamos com os valores e o frete para seu endereço no Rio.'
+  }
+];
+---
+
+<BaseLayout
+  title="Madeiras para Telhado e Construção em Jacarepaguá RJ"
+  description="Vigas de Maçaranduba, Caibros de Paraju, Ripas, Decks de Cumaru e Sarrafos de Pinus. Estoque pronta entrega e madeira certificada DOF na Estrada do Catonho."
+>
+  <Breadcrumbs items={[{ label: 'Madeiras para Construção & Telhados' }]} />
+
+  <!-- Category Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Madeiras Certificadas DOF · Desde 1989</div>
+          <h1 class="cat-hero-title">Madeiras para Telhados, Estruturas e Acabamentos no RJ</h1>
+          <p class="cat-hero-desc">
+            Amplo estoque de madeiras de lei pesadas e leves para obras residenciais e comerciais. Vigas, caibros, ripas, tábuas, colunas e decks em Maçaranduba, Cumaru, Tauari, Angelim, Eucalipto e Pinus.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20madeiras%20para%20telhado%2Fobra."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Cotar Madeiras no WhatsApp</span>
+            </a>
+            <a href="#catalogo" class="btn btn-secondary">Ver Produtos</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Espécies Disponíveis no Pátio</h2>
+          <ul class="spec-box-list">
+            <li><strong>Maçaranduba / Paraju:</strong> Estruturas de telhado pesado, vigas e caibros.</li>
+            <li><strong>Cumaru Extra:</strong> Decks nobres, pergolados aparentes e assoalhos.</li>
+            <li><strong>Tauari:</strong> Caixonetes, guarnições, aduelas e portas maciças.</li>
+            <li><strong>Angelim Vermelho:</strong> Terças, caibros e estruturas intermediárias.</li>
+            <li><strong>Eucalipto Tratado:</strong> Escoras, mourões e coberturas rústicas.</li>
+            <li><strong>Pinus:</strong> Sarrafos para caixaria, formas e escoramentos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Catalog -->
+  <section class="section-py" id="catalogo" aria-labelledby="catalog-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-heading" class="section-title">Catálogo de Madeiras</h2>
+        <p class="section-desc">
+          Consulte nossas peças com dimensões padrão ou solicite o desdobro sob medida para sua obra.
+        </p>
+      </div>
+
+      <ProductGrid columns={3}>
+        {woodProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Practical Selection Guide -->
+  <section class="guide-section section-py">
+    <div class="container container-narrow">
+      <div class="badge">Guia de Compra</div>
+      <h2 class="guide-title">Como Dimensionar as Madeiras para o Seu Telhado</h2>
+      <p class="guide-text">
+        Ao planejar a cobertura de uma casa ou varanda gourmet, a distância entre as paredes (vão livre) e o tipo de telha determinam a bitola correta das vigas e caibros.
+      </p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr>
+              <th>Elemento da Trama</th>
+              <th>Bitola Recomendada</th>
+              <th>Espaçamento Máximo</th>
+              <th>Aplicação Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Vigas Principais</strong></td>
+              <td>14x6 cm / 20x7 cm</td>
+              <td>Vãos de 2,5m a 6,0m</td>
+              <td>Sustentação estrutural sobre paredes ou pilares</td>
+            </tr>
+            <tr>
+              <td><strong>Caibros</strong></td>
+              <td>6x3,5 cm / 5x5 cm</td>
+              <td>40 a 50 cm entre eixos</td>
+              <td>Caimento e suporte das ripas</td>
+            </tr>
+            <tr>
+              <td><strong>Ripas</strong></td>
+              <td>5x1,5 cm / 5x2 cm</td>
+              <td>Galga conforme a telha (~33cm)</td>
+              <td>Encaixe e travamento das telhas</td>
+            </tr>
+            <tr>
+              <td><strong>Pilares / Colunas</strong></td>
+              <td>14x14 cm / 20x20 cm</td>
+              <td>Conforme projeto</td>
+              <td>Sustentação de varandas e pergolados</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="guide-note">
+        <em>Dica de profissional:</em> Leia nosso artigo completo sobre <a href="/blog/melhor-madeira-para-telhado/">qual a melhor madeira para telhado</a> e veja o passo a passo de <a href="/blog/como-calcular-madeira-para-telhado/">como calcular madeira para telhado</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <WhatsAppCTA
+    title="Precisa cotar madeiras para sua obra em Jacarepaguá?"
+    subtitle="Envie suas medidas de vigas, caibros e ripas pelo WhatsApp. Retornamos com o valor das peças e o frete para o seu endereço."
+    buttonText="Enviar Lista de Madeiras"
+    defaultMessage="Olá! Gostaria de cotar madeiras para telhado e estrutura na Catonho Madeiras."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={madeirasFAQs} title="Dúvidas Frequentes sobre Madeiras" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+
+  /* Guide Section */
+  .guide-section {
+    background-color: var(--color-paper-card);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .guide-title {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-text {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-table-wrap {
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-xs);
+  }
+
+  .guide-table th, .guide-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .guide-table th {
+    background-color: var(--color-paper-subtle);
+    font-weight: 600;
+    color: var(--color-ink-primary);
+  }
+
+  .guide-note {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+  }
+</style>

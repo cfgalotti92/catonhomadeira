@@ -1,0 +1,340 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const productCategories = [
+  { label: 'Madeiras para Telhado & Estrutura', href: '/madeiras/' },
+  { label: 'Telhas & Coberturas', href: '/telhas/' },
+  { label: 'Portas de Madeira Maciça', href: '/portas/' },
+  { label: 'Janelas Coloniais & Maxim-ar', href: '/janelas/' },
+  { label: 'Churrasqueiras Pré-Moldadas', href: '/churrasqueiras/' },
+  { label: 'Ferragens & Conectores', href: '/ferragens/' },
+  { label: 'Fechaduras & Puxadores', href: '/fechaduras/' }
+];
+
+const isProductsActive = productCategories.some(cat => currentPath.startsWith(cat.href));
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+};
+---
+
+<div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+
+<aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Navegação Móvel" aria-hidden="true">
+  <div class="drawer-header">
+    <div class="drawer-brand">
+      <img src="/images/logo.png" alt="Logo Catonho Madeiras" width="38" height="38" class="drawer-logo-img" />
+      <div class="drawer-brand-text">
+        <span class="drawer-title">CATONHO MADEIRAS</span>
+        <span class="drawer-subtitle">Jacarepaguá · Desde 1989</span>
+      </div>
+    </div>
+    <button class="drawer-close" id="mobile-nav-close" aria-label="Fechar menu de navegação">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="drawer-body">
+    <ul class="drawer-list">
+      <li class="drawer-item">
+        <a href="/" class:list={['drawer-link', { 'is-active': isActive('/') }]}>
+          Página Inicial
+        </a>
+      </li>
+
+      <li class="drawer-item">
+        <a href="/sobre/" class:list={['drawer-link', { 'is-active': isActive('/sobre/') }]}>
+          Quem Somos
+        </a>
+      </li>
+
+      <!-- Collapsible Produtos -->
+      <li class="drawer-item drawer-item-collapsible">
+        <details class="drawer-details" open={isProductsActive}>
+          <summary class:list={['drawer-summary', { 'is-active': isProductsActive }]}>
+            <span>Produtos</span>
+            <svg class="drawer-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </summary>
+          <ul class="drawer-sublist">
+            {productCategories.map((cat) => (
+              <li class="drawer-subitem">
+                <a href={cat.href} class:list={['drawer-sublink', { 'is-active': isActive(cat.href) }]}>
+                  {cat.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
+      </li>
+
+      <li class="drawer-item">
+        <a href="/orcamento/" class:list={['drawer-link', { 'is-active': isActive('/orcamento/') }]}>
+          Orçamento Online
+        </a>
+      </li>
+
+      <li class="drawer-item">
+        <a href="/blog/" class:list={['drawer-link', { 'is-active': isActive('/blog/') }]}>
+          Blog & Dicas Técnicas
+        </a>
+      </li>
+
+      <li class="drawer-item">
+        <a href="/contato/" class:list={['drawer-link', { 'is-active': isActive('/contato/') }]}>
+          Contato & Localização
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="drawer-footer">
+    <a
+      href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20pelo%20site."
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn btn-whatsapp btn-drawer-whatsapp"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+      </svg>
+      <span>Orçamento no WhatsApp</span>
+    </a>
+    <div class="drawer-contact-info">
+      <p><strong>Tel:</strong> (21) 2435-1454 / (21) 2423-4425</p>
+      <p>Estrada do Catonho, 1205 — Jacarepaguá, RJ</p>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  (function() {
+    const toggle = document.getElementById('mobile-nav-toggle');
+    const close = document.getElementById('mobile-nav-close');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+
+    function openMenu() {
+      if (!drawer || !backdrop || !toggle) return;
+      drawer.classList.add('is-open');
+      backdrop.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      if (!drawer || !backdrop || !toggle) return;
+      drawer.classList.remove('is-open');
+      backdrop.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    if (toggle) toggle.addEventListener('click', openMenu);
+    if (close) close.addEventListener('click', closeMenu);
+    if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+
+<style>
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+  }
+
+  .mobile-nav-backdrop.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .mobile-nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 360px;
+    background-color: var(--color-paper-card);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform var(--transition-base);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-hover);
+    overflow-y: auto;
+  }
+
+  .mobile-nav-drawer.is-open {
+    transform: translateX(0);
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-paper-subtle);
+  }
+
+  .drawer-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .drawer-logo-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .drawer-brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-ink-primary);
+  }
+
+  .drawer-subtitle {
+    display: block;
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .drawer-close {
+    background: none;
+    border: none;
+    color: var(--color-ink-secondary);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--radius-xs);
+  }
+
+  .drawer-body {
+    flex: 1;
+    padding: var(--space-4) 0;
+  }
+
+  .drawer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .drawer-link {
+    display: block;
+    padding: var(--space-3) var(--space-6);
+    color: var(--color-ink-primary);
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .drawer-link:hover,
+  .drawer-link.is-active {
+    background-color: var(--color-paper-subtle);
+    border-left-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Details & Submenu */
+  .drawer-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-6);
+    color: var(--color-ink-primary);
+    font-size: var(--text-base);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .drawer-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .drawer-chevron {
+    transition: transform var(--transition-fast);
+  }
+
+  .drawer-details[open] .drawer-chevron {
+    transform: rotate(180deg);
+  }
+
+  .drawer-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-paper-subtle);
+  }
+
+  .drawer-sublink {
+    display: block;
+    padding: var(--space-2) var(--space-6) var(--space-2) var(--space-8);
+    color: var(--color-ink-secondary);
+    font-size: var(--text-sm);
+    text-decoration: none;
+  }
+
+  .drawer-sublink:hover,
+  .drawer-sublink.is-active {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .drawer-footer {
+    padding: var(--space-6);
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-paper-subtle);
+  }
+
+  .btn-drawer-whatsapp {
+    width: 100%;
+    margin-bottom: var(--space-4);
+  }
+
+  .drawer-contact-info {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+    line-height: var(--leading-normal);
+  }
+
+  .drawer-contact-info p {
+    margin: 0 0 4px 0;
+  }
+</style>

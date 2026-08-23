@@ -1,0 +1,86 @@
+---
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["HomeGoodsStore", "Store", "LocalBusiness"],
+  "@id": "https://catonhomadeira.com.br/#localbusiness",
+  "name": "Catonho Madeiras",
+  "legalName": "Catonho Madeiras",
+  "description": "Madeireira e loja de materiais para construção especializada em madeira para telhado, telhas, portas maciças, janelas, ferragens e churrasqueiras em Jacarepaguá, Rio de Janeiro.",
+  "url": "https://catonhomadeira.com.br",
+  "telephone": "+55-21-97901-1647",
+  "email": "catonhomadeiras@hotmail.com",
+  "image": [
+    "https://catonhomadeira.com.br/images/empresa/catonho-madeiras-loja-fachada.jpg",
+    "https://catonhomadeira.com.br/images/empresa/catonho-madeiras-primordios-1989.jpg"
+  ],
+  "logo": "https://catonhomadeira.com.br/favicon.svg",
+  "foundingDate": "1989",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Estrada do Catonho, 1205",
+    "addressLocality": "Rio de Janeiro",
+    "addressRegion": "RJ",
+    "postalCode": "22723-013",
+    "addressCountry": "BR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -22.888514,
+    "longitude": -43.398032
+  },
+  "hasMap": "https://maps.google.com/?q=Estrada+do+Catonho,+1205+Jacarepagua+Rio+de+Janeiro+RJ",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Saturday"],
+      "opens": "08:00",
+      "closes": "12:00"
+    }
+  ],
+  "priceRange": "$$",
+  "currenciesAccepted": "BRL",
+  "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+  "areaServed": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Jacarepaguá, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Taquara, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Tanque, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Freguesia, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Barra da Tijuca, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Recreio dos Bandeirantes, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Jardim Sulacap, Rio de Janeiro"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Zona Oeste, Rio de Janeiro"
+    }
+  ]
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(localBusinessSchema)} />

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Fundo Sólido Amadeirado -->
+  <rect width="64" height="64" rx="12" fill="#2B1A0E"/>
+  
+  <!-- Viga de Madeira Estrutural Estilizada -->
+  <path d="M12 44L32 16L52 44H42L32 29L22 44H12Z" fill="#D96B27"/>
+  
+  <!-- Detalhe da Trama do Telhado / Madeira -->
+  <path d="M25 44L32 34L39 44H47L32 22L17 44H25Z" fill="#F4A261"/>
+  <rect x="29" y="44" width="6" height="8" fill="#D96B27"/>
+</svg>

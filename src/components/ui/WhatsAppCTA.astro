@@ -1,0 +1,241 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  defaultMessage?: string;
+  variant?: 'section' | 'banner' | 'card' | 'inline';
+}
+
+const {
+  title = 'Envie sua Lista de Materiais para Cotação Rápida',
+  subtitle = 'Atendimento técnico direto pelo WhatsApp. Receba valores de madeiras, telhas ou esquadrias, cálculo de frete e prazo de entrega para sua obra no Rio de Janeiro.',
+  buttonText = 'Chamar no WhatsApp com Minha Lista',
+  defaultMessage = 'Olá! Gostaria de solicitar um orçamento para o meu projeto.',
+  variant = 'section'
+} = Astro.props;
+
+const encodedMessage = encodeURIComponent(defaultMessage);
+const whatsappUrl = `https://wa.me/5521979011647?text=${encodedMessage}`;
+---
+
+{variant === 'section' && (
+  <section class="whatsapp-cta-section section-py" aria-labelledby="whatsapp-cta-title">
+    <div class="container">
+      <div class="whatsapp-cta-box">
+        <div class="whatsapp-cta-content">
+          <div class="badge badge-whatsapp">Atendimento Especializado · RJ</div>
+          <h2 id="whatsapp-cta-title" class="whatsapp-cta-heading">{title}</h2>
+          <p class="whatsapp-cta-desc">{subtitle}</p>
+          <div class="whatsapp-cta-features">
+            <div class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Orçamento sem compromisso</span>
+            </div>
+            <div class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Entrega rápida em Jacarepaguá e Zona Oeste</span>
+            </div>
+            <div class="feature-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <span>Madeiras brutas e aparelhadas</span>
+            </div>
+          </div>
+        </div>
+        <div class="whatsapp-cta-action">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp btn-lg"
+            data-cta="whatsapp_section"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+            </svg>
+            <span>{buttonText}</span>
+          </a>
+          <span class="action-note">Tempo médio de resposta: poucos minutos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'card' && (
+  <div class="whatsapp-card">
+    <div class="whatsapp-card-icon" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+      </svg>
+    </div>
+    <div class="whatsapp-card-body">
+      <h3 class="whatsapp-card-title">{title}</h3>
+      <p class="whatsapp-card-desc">{subtitle}</p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-whatsapp"
+        data-cta="whatsapp_card"
+      >
+        <span>{buttonText}</span>
+      </a>
+    </div>
+  </div>
+)}
+
+{variant === 'inline' && (
+  <a
+    href={whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn btn-whatsapp"
+    data-cta="whatsapp_inline"
+  >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+    </svg>
+    <span>{buttonText}</span>
+  </a>
+)}
+
+<style>
+  /* Section Variant */
+  .whatsapp-cta-section {
+    background-color: var(--color-paper-subtle);
+  }
+
+  .whatsapp-cta-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-card);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .whatsapp-cta-box {
+      grid-template-columns: 1.6fr 1fr;
+      padding: var(--space-10);
+    }
+  }
+
+  .badge-whatsapp {
+    background-color: var(--color-whatsapp-surface);
+    color: var(--color-whatsapp);
+    border-color: rgba(37, 211, 102, 0.3);
+    margin-bottom: var(--space-3);
+  }
+
+  .whatsapp-cta-heading {
+    font-size: var(--text-2xl);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    line-height: var(--leading-snug);
+  }
+
+  .whatsapp-cta-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-normal);
+    margin-bottom: var(--space-6);
+  }
+
+  .whatsapp-cta-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    color: var(--color-ink-primary);
+    font-weight: 500;
+  }
+
+  .feature-item svg {
+    color: var(--color-whatsapp);
+    flex-shrink: 0;
+  }
+
+  .whatsapp-cta-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 900px) {
+    .whatsapp-cta-action {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-base);
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .action-note {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+  }
+
+  /* Card Variant */
+  .whatsapp-card {
+    display: flex;
+    gap: var(--space-4);
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .whatsapp-card-icon {
+    width: 48px;
+    height: 48px;
+    background-color: var(--color-whatsapp-surface);
+    color: var(--color-whatsapp);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .whatsapp-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .whatsapp-card-title {
+    font-size: var(--text-lg);
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .whatsapp-card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-2);
+  }
+</style>

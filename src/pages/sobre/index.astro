@@ -1,0 +1,336 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+---
+
+<BaseLayout
+  title="Sobre a Catonho Madeiras · Tradição no Rio de Janeiro Desde 1989"
+  description="Conheça a história da Catonho Madeiras: mais de 35 anos de atuação na Estrada do Catonho, 1205, Jacarepaguá. Madeira legalizada com DOF e compromisso com o cliente."
+>
+  <Breadcrumbs items={[{ label: 'Sobre a Empresa' }]} />
+
+  <!-- About Hero -->
+  <header class="about-hero section-py">
+    <div class="container container-narrow">
+      <div class="badge">Nossa História & Tradição</div>
+      <h1 class="about-hero-title">Mais de Três Décadas Fornecendo Madeira de Qualidade no Rio de Janeiro</h1>
+      <p class="about-hero-lead">
+        Fundada em 1989 na Estrada do Catonho, a Catonho Madeiras consolidou-se como um ponto de referência para construtores, telhadistas, marceneiros e famílias que constroem ou reformam em Jacarepaguá e toda a Zona Oeste carioca.
+      </p>
+    </div>
+  </header>
+
+  <!-- Story & History Section with Historical Image -->
+  <section class="section-py story-section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-content">
+          <span class="badge">Desde 1989</span>
+          <h2 class="story-title">A Trajetória na Estrada do Catonho</h2>
+          <p>
+            No final da década de 1980, a região de Jacarepaguá e adjacências iniciavam um intenso processo de expansão urbana e habitacional. Foi nesse cenário de crescimento que a Catonho Madeiras abriu suas portas no número 1205 da Estrada do Catonho — via histórica que conecta a Baixada de Jacarepaguá à Zona Oeste e Norte da cidade.
+          </p>
+          <p>
+            Ao longo de mais de 35 anos de atividade contínua no mesmo endereço físico, construímos relações sólidas baseadas na entrega honesta, no conhecimento técnico de carpintaria e na seleção rigorosa de madeiras de lei que realmente resistem ao clima e às exigências estruturais do Rio de Janeiro.
+          </p>
+          <p>
+            O que começou como um pátio focado em madeiramento pesado para telhados coloniais expandiu-se para um catálogo completo que hoje abrange telhas cerâmicas e esmaltadas, portas maciças e frisadas, janelas coloniais, ferragens estruturais e churrasqueiras pré-moldadas.
+          </p>
+        </div>
+
+        <div class="story-visual">
+          <figure class="historical-figure">
+            <img
+              src="/images/empresa/catonho-madeiras-primordios-1989.jpg"
+              alt="Registro histórico dos fundadores e primeiros anos da Catonho Madeiras em 1989"
+              width="600"
+              height="430"
+              loading="lazy"
+              decoding="async"
+              class="historical-image"
+            />
+            <figcaption class="historical-caption">
+              Registro histórico dos primórdios da Catonho Madeiras (1989) — Estrada do Catonho, Jacarepaguá.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values & Sustainability Section -->
+  <section class="values-section section-py">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge">Pilares de Atuação</div>
+        <h2 class="section-title">Compromisso com Procedência e Atendimento</h2>
+        <p class="section-desc">
+          Entenda os princípios que orientam o nosso trabalho diário na seleção de materiais e no relacionamento com os clientes.
+        </p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="value-card-title">Madeira 100% Legalizada (DOF)</h3>
+          <p class="value-card-desc">
+            Comercializamos exclusivamente lotes de madeira com Documento de Origem Florestal (DOF) e controle do IBAMA, garantindo manejo florestal sustentável e segurança jurídica total para sua obra.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3 class="value-card-title">Atendimento Consultivo</h3>
+          <p class="value-card-desc">
+            Nossa equipe entende de medidas nominais, bitolas, galgas de telha e cálculo estrutural. Ajudamos você a conferir suas listas para evitar desperdício de material ou compra errada.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3 class="value-card-title">Logística & Entrega no RJ</h3>
+          <p class="value-card-desc">
+            Localização estratégica na Estrada do Catonho com acesso rápido à Transolímpica e às principais vias da Zona Oeste, garantindo entrega ágil com caminhões preparados para descarga.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Store Today Section -->
+  <section class="section-py store-today-section">
+    <div class="container">
+      <div class="store-today-grid">
+        <div class="store-today-visual">
+          <img
+            src="/images/empresa/catonho-madeiras-loja-fachada.jpg"
+            alt="Fachada atual e depósito de madeiras da Catonho Madeiras na Estrada do Catonho"
+            width="600"
+            height="380"
+            loading="lazy"
+            decoding="async"
+            class="store-today-image"
+          />
+        </div>
+        <div class="store-today-content">
+          <span class="badge">Infraestrutura Própria</span>
+          <h2 class="store-today-title">Nosso Depósito em Jacarepaguá</h2>
+          <p>
+            Contamos com maquinário para corte e desdobro, área coberta para armazenamento de madeiras secas e aparelhadas, estoque organizado de telhas cerâmicas e showroom com modelos de portas maciças e churrasqueiras pré-moldadas.
+          </p>
+          <p>
+            Venha tomar um café conosco na Estrada do Catonho, 1205 ou envie sua relação de materiais pelo WhatsApp para receber um atendimento ágil e personalizado.
+          </p>
+          <div class="store-today-actions">
+            <a href="/contato/" class="btn btn-primary">Ver Como Chegar</a>
+            <a
+              href="https://wa.me/5521979011647"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              Falar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <WhatsAppCTA
+    title="Pronto para planejar sua compra com quem entende de madeira?"
+    subtitle="Envie sua lista de materiais para a Catonho Madeiras. Tradição, procedência e rapidez para sua obra no Rio de Janeiro."
+    buttonText="Solicitar Cotação no WhatsApp"
+  />
+</BaseLayout>
+
+<style>
+  .about-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .about-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .about-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .about-hero-lead {
+    font-size: var(--text-lg);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Story Grid */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .story-grid {
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .story-title {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .story-content p {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .historical-figure {
+    margin: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--color-paper-muted);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .historical-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .historical-caption {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-paper-subtle);
+    font-style: normal;
+  }
+
+  /* Values Section */
+  .values-section {
+    background-color: var(--color-paper-subtle);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .values-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .value-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+  }
+
+  .value-card-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-2);
+    color: var(--color-ink-primary);
+  }
+
+  .value-card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  /* Store Today */
+  .store-today-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .store-today-grid {
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .store-today-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+  }
+
+  .store-today-title {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+
+  .store-today-content p {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .store-today-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+  }
+</style>

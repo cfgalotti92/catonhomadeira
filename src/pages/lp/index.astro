@@ -1,0 +1,1286 @@
+---
+// src/pages/lp/index.astro
+// Landing Page de Alta Conversão para Google Ads (Tráfego Pago /lptrafegopago)
+// Arquitetura Direta: Atenção -> Oferta Clara -> Produtos -> Confiança/Selo -> Mapa/Localização
+import SEOHead from '../../components/seo/SEOHead.astro';
+import '../../styles/global.css';
+
+const productCategories = [
+  {
+    title: 'Vigas de Maçaranduba (Paraju)',
+    desc: 'Bitolas 14x6, 15x5, 20x7 e 30x7 cm. Peças brutas e aparelhadas para estruturas de alta resistência.',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Vigas de maçaranduba bruta para telhado',
+    badge: 'Mais Vendido',
+    msg: 'Olá! Vim pelo Google e gostaria de cotar Vigas de Maçaranduba.'
+  },
+  {
+    title: 'Caibros e Ripas Aparelhadas',
+    desc: 'Caibros 6x3,5 cm e ripas 5x1,5 cm de Maçaranduba com alinhamento perfeito para montagem de telhados.',
+    image: '/images/products/madeiras/caibro-macaranduba.png',
+    imageAlt: 'Caibros de maçaranduba aparelhados para telhado',
+    badge: 'Pronta Entrega',
+    msg: 'Olá! Gostaria de cotar Caibros e Ripas para meu telhado.'
+  },
+  {
+    title: 'Telhas Coloniais & Esmaltadas',
+    desc: 'Capa e bica (40, 47, 50 e 57cm), romanas, portuguesas e esmaltadas vitrificadas sem proliferação de limo.',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telha cerâmica colonial capa e bica',
+    badge: 'Preço Direto',
+    msg: 'Olá! Gostaria de cotar Telhas Coloniais e Esmaltadas.'
+  },
+  {
+    title: 'Portas de Madeira Maciça',
+    desc: 'Modelos pivotantes, em lambri diagonal e frisadas em Tauari e Angelim com caixonetes sob medida.',
+    image: '/images/products/portas/porta-macica-tauari-lambri.jpg',
+    imageAlt: 'Porta maciça tauari lambri diagonal',
+    badge: 'Sob Medida',
+    msg: 'Olá! Gostaria de cotar Portas Maciças e Esquadrias.'
+  },
+  {
+    title: 'Deck de Cumaru Extra (Piscina)',
+    desc: 'Pranchas nobres aparelhadas e boleadas para decks de piscina, varandas gourmet e pergolados.',
+    image: '/images/products/madeiras/deck-cumaru.png',
+    imageAlt: 'Pranchas de deck de cumaru aparelhado',
+    badge: 'Qualidade Premium',
+    msg: 'Olá! Gostaria de cotar Deck de Cumaru para minha área externa.'
+  },
+  {
+    title: 'Churrasqueiras Pré-Moldadas',
+    desc: 'Concreto refratário com acabamento tijolinho, coifa, dutos prolongadores e bancadas.',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
+    imageAlt: 'Churrasqueira pré-moldada refratária para área gourmet',
+    badge: 'Área Gourmet',
+    msg: 'Olá! Gostaria de cotar Churrasqueira Pré-Moldada.'
+  }
+];
+
+const steps = [
+  {
+    num: '1',
+    title: 'Envie sua Lista no WhatsApp',
+    desc: 'Mande os itens, bitolas e metragens da sua obra ou a foto do seu projeto.'
+  },
+  {
+    num: '2',
+    title: 'Receba o Cálculo em 10 Min',
+    desc: 'Nossos técnicos calculam as peças exatas com frete e prazo para sua região.'
+  },
+  {
+    num: '3',
+    title: 'Pague na Entrega da Carga',
+    desc: 'Descarregamos no seu canteiro e você paga com cartão, Pix ou faturado.'
+  }
+];
+
+const faqs = [
+  {
+    q: 'Qual o tempo de resposta do orçamento?',
+    a: 'Nosso atendimento comercial responde em menos de 10 minutos pelo WhatsApp de segunda a sexta das 08h às 18h e aos sábados das 08h às 12h.'
+  },
+  {
+    q: 'Vocês entregam em todo o Rio de Janeiro?',
+    a: 'Sim. Temos frota própria de caminhões com entregas diárias na Zona Oeste (Jacarepaguá, Barra da Tijuca, Recreio, Taquara, Vargens), Zona Norte, Sulacap, Valqueire e Grande Rio.'
+  },
+  {
+    q: 'As madeiras têm nota fiscal e garantia de origem?',
+    a: '100% das madeiras de lei comercializadas possuem Documento de Origem Florestal (DOF) e Nota Fiscal, garantindo procedência legal, peças retas e secas.'
+  },
+  {
+    q: 'Posso retirar o material direto no depósito?',
+    a: 'Sim! Nosso pátio fica na Estrada do Catonho, 1205 (Jacarepaguá), com amplo estacionamento e carregamento imediato de peças.'
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <SEOHead
+      title="Madeiras para Telhado & Telhas no Rio | Catonho Madeiras (Orçamento Rápido)"
+      description="Depósito de madeiras para telhado e telhas em Jacarepaguá. Vigas de Maçaranduba, Caibros, Ripas, Telhas e Portas. Cotação em 10 min no WhatsApp (21) 97901-1647 ou Ligue (21) 2435-1454."
+      noindex={false}
+    />
+  </head>
+  <body class="lp-body">
+    <!-- 1. Header Focado (Anti-Vazamento) -->
+    <header class="lp-header">
+      <div class="container lp-header-inner">
+        <div class="lp-brand">
+          <img src="/images/logo.png" alt="Logo Catonho Madeiras" width="48" height="48" class="lp-logo-img" />
+          <div class="lp-brand-text">
+            <span class="lp-brand-title">CATONHO MADEIRAS</span>
+            <span class="lp-brand-sub">Jacarepaguá · Desde 1989</span>
+          </div>
+        </div>
+
+        <div class="lp-header-actions">
+          <a href="tel:2124351454" class="lp-call-header-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>(21) 2435-1454</span>
+          </a>
+
+          <a
+            href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20vim%20pelo%20Google%20e%20gostaria%20de%20um%20or%C3%A7amento%20r%C3%A1pido."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp lp-wa-header-btn"
+            data-cta="google_ads_lp_whatsapp"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+            </svg>
+            <span>WhatsApp (21) 97901-1647</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. Hero Section Split-Screen (Alto Impacto Visual & Conversão) -->
+    <section class="lp-hero-split">
+      <div class="container">
+        <div class="lp-hero-row">
+          <!-- Coluna 1: Proposta de Valor & Ações Imediatas -->
+          <div class="lp-hero-left">
+            <div class="lp-pill-kicker">
+              <span class="pulse-dot" aria-hidden="true"></span>
+              <span>DEPÓSITO PRÓPRIO · ENTREGA RÁPIDA NO RIO</span>
+            </div>
+
+            <h1 class="lp-main-heading">
+              Madeiras para Telhado & Telhas com Preço Direto de Depósito
+            </h1>
+
+            <p class="lp-main-lead">
+              Compre vigas de <strong>Maçaranduba</strong>, caibros, ripas e telhas coloniais com entrega programada em toda a Zona Oeste e Grande Rio. Envie sua lista e receba o orçamento detalhado em <strong>menos de 10 minutos</strong>.
+            </p>
+
+            <!-- Ações Principais: WhatsApp + Botões de Ligação -->
+            <div class="lp-cta-action-block">
+              <a
+                href="https://wa.me/5521979011647?text=Ol%C3%A1%21%20Vim%20pelo%20anuncio%20do%20Google%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20madeiras%20e%20telhas."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp lp-btn-primary-wa"
+                data-cta="google_ads_lp_whatsapp"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+                </svg>
+                <span>Solicitar Orçamento no WhatsApp</span>
+              </a>
+
+              <div class="lp-call-options">
+                <span class="call-lead">Ou prefere ligar agora para o depósito?</span>
+                <div class="call-buttons-inline">
+                  <a href="tel:2124351454" class="btn lp-call-pill">
+                    📞 (21) 2435-1454
+                  </a>
+                  <a href="tel:2124234425" class="btn lp-call-pill">
+                    📞 (21) 2423-4425
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Selo de Avaliação Google Integrado na Hero -->
+            <div class="lp-hero-google-proof">
+              <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <div class="stars-gold">★★★★★</div>
+              <span class="proof-score"><strong>4.9 / 5.0</strong> no Google Meu Negócio (+100 avaliações)</span>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Card Visual com Estoque e Diferenciais -->
+          <div class="lp-hero-right">
+            <div class="lp-hero-image-card">
+              <img
+                src="/images/products/madeiras/viga-macaranduba-bruta.jpg"
+                alt="Madeiramento nobre estrutural de maçaranduba no depósito da Catonho Madeiras"
+                width="540"
+                height="360"
+                class="hero-card-img"
+              />
+              <div class="hero-card-badge-overlay">
+                <strong>Pátio Próprio em Jacarepaguá</strong>
+                <span>Estrada do Catonho, 1205</span>
+              </div>
+              <div class="hero-card-footer-stats">
+                <div class="stat-box">
+                  <span class="stat-val">35+</span>
+                  <span class="stat-lbl">Anos de Loja</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-val">100%</span>
+                  <span class="stat-lbl">Madeiras com DOF</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-val">52k+</span>
+                  <span class="stat-lbl">Clientes no RJ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Passo a Passo Rápido: Como Funciona -->
+    <section class="lp-steps-section">
+      <div class="container">
+        <div class="lp-steps-grid">
+          {steps.map((s) => (
+            <div class="lp-step-item">
+              <div class="step-badge">{s.num}</div>
+              <div class="step-text">
+                <h3 class="step-title">{s.title}</h3>
+                <p class="step-desc">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Catálogo de Produtos em Estoque com Ações Rápidas -->
+    <section class="lp-catalog-section" id="produtos">
+      <div class="container">
+        <div class="lp-section-title-wrap">
+          <span class="lp-kicker">Pronta Entrega no Pátio</span>
+          <h2 class="lp-section-heading">O Que Você Precisa para Sua Obra Hoje?</h2>
+          <p class="lp-section-sub">Selecione o produto desejado para falar direto com o vendedor no WhatsApp:</p>
+        </div>
+
+        <div class="lp-catalog-grid">
+          {productCategories.map((item) => (
+            <article class="lp-item-card">
+              <div class="lp-item-img-wrap">
+                <img src={item.image} alt={item.imageAlt} width="360" height="240" loading="lazy" class="lp-item-img" />
+                <span class="lp-item-badge">{item.badge}</span>
+              </div>
+              <div class="lp-item-body">
+                <h3 class="lp-item-title">{item.title}</h3>
+                <p class="lp-item-desc">{item.desc}</p>
+                <div class="lp-item-cta-group">
+                  <a
+                    href={`https://wa.me/5521979011647?text=${encodeURIComponent(item.msg)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-whatsapp lp-item-btn-wa"
+                    data-cta="google_ads_lp_whatsapp"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+                    </svg>
+                    <span>Cotar no WhatsApp</span>
+                  </a>
+                  <a href="tel:2124351454" class="btn lp-item-btn-call" title="Ligar para cotar">
+                    <span>Ligar</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Selo Google 4.9 Estrelas (Seção de Autoridade & Confiança) -->
+    <section class="lp-google-full-section">
+      <div class="container">
+        <div class="lp-google-center-box">
+          <div class="google-header-inline">
+            <div class="google-big-g" aria-hidden="true">
+              <svg width="42" height="42" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+            </div>
+            <div class="google-score-meta">
+              <span class="score-digit">4.9</span>
+              <div class="stars-gold-big" aria-label="Avaliação 4.9 de 5 estrelas">★★★★★</div>
+            </div>
+          </div>
+
+          <h2 class="google-center-title">Mais de 100 Avaliações 5 Estrelas no Google</h2>
+          <p class="google-center-desc">
+            A Catonho Madeiras é avaliada no Rio de Janeiro pela pontualidade de entrega, qualidade rigorosa das madeiras nobres e transparência no atendimento direto da loja física.
+          </p>
+
+          <a
+            href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20e%20pedir%20um%20or%C3%A7amento."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp lp-btn-google-talk"
+            data-cta="google_ads_lp_whatsapp"
+          >
+            <span>Falar com Nossos Especialistas no WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FAQ Anti-Objeções -->
+    <section class="lp-faq-section">
+      <div class="container lp-faq-wrap">
+        <div class="lp-section-title-wrap">
+          <span class="lp-kicker">Dúvidas Rápidas</span>
+          <h2 class="lp-section-heading">Perguntas Frequentes sobre Entregas e Pedidos</h2>
+        </div>
+
+        <div class="lp-faq-accordion">
+          {faqs.map((f) => (
+            <details class="lp-faq-card">
+              <summary class="lp-faq-sum">
+                <span>{f.q}</span>
+                <span class="sum-toggle" aria-hidden="true">+</span>
+              </summary>
+              <div class="lp-faq-content">
+                <p>{f.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Seção Final: Localização & Mapa Integrado do Google Maps -->
+    <section class="lp-map-section" id="localizacao">
+      <div class="container">
+        <div class="lp-section-title-wrap">
+          <span class="lp-kicker">Visite Nosso Depósito</span>
+          <h2 class="lp-section-heading">Pátio e Loja Física em Jacarepaguá</h2>
+          <p class="lp-section-sub">Venha escolher seu madeiramento pessoalmente ou retire o material no depósito:</p>
+        </div>
+
+        <div class="lp-map-split">
+          <!-- Card de Contatos & Telefones -->
+          <div class="lp-store-details-card">
+            <h3 class="store-name">Catonho Madeiras</h3>
+            
+            <p class="store-address-p">
+              📍 <strong>Estrada do Catonho, 1205</strong><br />
+              Tanque / Jacarepaguá — Rio de Janeiro - RJ<br />
+              CEP 22723-013 (Acesso rápido pela Transolímpica e Sulacap)
+            </p>
+
+            <div class="store-hours">
+              <strong>Horário de Funcionamento:</strong>
+              <span>Segunda a Sexta: 08:00 às 18:00 | Sábado: 08:00 às 12:00</span>
+            </div>
+
+            <div class="store-phones-grid">
+              <strong>Ligue para nossos telefones:</strong>
+              <div class="phones-button-list">
+                <a href="tel:2124351454" class="btn lp-phone-btn">📞 (21) 2435-1454</a>
+                <a href="tel:2124234425" class="btn lp-phone-btn">📞 (21) 2423-4425</a>
+                <a href="tel:2124234401" class="btn lp-phone-btn">📞 (21) 2423-4401</a>
+                <a href="https://wa.me/5521979011647" target="_blank" rel="noopener noreferrer" class="btn lp-phone-btn lp-phone-btn-wa">
+                  💬 WhatsApp: (21) 97901-1647
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Estrada+do+Catonho+1205+Jacarepagua+Rio+de+Janeiro+RJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary lp-btn-gps"
+            >
+              <span>Abrir Rota no Google Maps / GPS</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <!-- Mapa Integrado do Google Maps -->
+          <div class="lp-map-embed-card">
+            <iframe
+              title="Localização da Catonho Madeiras no Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.887236599723!2d-43.3768285!3d-22.9175317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd84b2cb5d263%3A0x67398fb9148d5b88!2sEstr.%20do%20Catonho%2C%201205%20-%20Jardim%20Sulacap%2C%20Rio%20de%20Janeiro%20-%20RJ!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="100%"
+              style="border:0; min-height: 400px;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé Simples -->
+    <footer class="lp-footer">
+      <div class="container lp-footer-inner">
+        <p>© {new Date().getFullYear()} Catonho Madeiras. Tradição desde 1989. CNPJ ativo. Estrada do Catonho, 1205 — Jacarepaguá, RJ.</p>
+        <p class="lp-footer-numbers">Central de Vendas: (21) 2435-1454 / (21) 2423-4425 · WhatsApp: (21) 97901-1647</p>
+      </div>
+    </footer>
+
+    <!-- Barra Fixa Mobile Dupla (Ligar + WhatsApp) -->
+    <div class="lp-sticky-bar" aria-label="Ações Rápidas de Contato">
+      <a href="tel:2124351454" class="lp-sticky-call">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Ligar Agora</span>
+      </a>
+
+      <a
+        href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20vim%20pelo%20Google%20e%20gostaria%20de%20um%20or%C3%A7amento%20r%C3%A1pido."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="lp-sticky-wa"
+        data-cta="google_ads_lp_whatsapp"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+        </svg>
+        <span>Pedir no WhatsApp</span>
+      </a>
+    </div>
+  </body>
+</html>
+
+<style>
+  .lp-body {
+    background-color: var(--color-paper);
+    color: var(--color-ink-primary);
+    padding-bottom: 74px;
+  }
+
+  @media (min-width: 768px) {
+    .lp-body {
+      padding-bottom: 0;
+    }
+  }
+
+  /* 1. Header */
+  .lp-header {
+    background-color: var(--color-paper-card);
+    border-bottom: 1px solid var(--color-border);
+    padding-block: var(--space-3);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .lp-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .lp-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .lp-logo-img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  }
+
+  .lp-brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lp-brand-title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 800;
+    color: var(--color-ink-primary);
+    line-height: 1.1;
+  }
+
+  .lp-brand-sub {
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .lp-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .lp-call-header-btn {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-ink-primary);
+    text-decoration: none;
+    padding: 8px 12px;
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast);
+  }
+
+  @media (min-width: 640px) {
+    .lp-call-header-btn {
+      display: inline-flex;
+    }
+  }
+
+  .lp-call-header-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .lp-wa-header-btn {
+    font-size: var(--text-xs);
+    padding: 8px 16px;
+  }
+
+  /* 2. Hero Split Screen */
+  .lp-hero-split {
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+    background-color: #1a140e;
+    color: #ffffff;
+    background-image: radial-gradient(circle at top right, rgba(217, 107, 34, 0.15) 0%, transparent 60%), linear-gradient(180deg, #18120c 0%, #1f1710 100%);
+    border-bottom: 1px solid var(--color-border-hairline);
+  }
+
+  @media (min-width: 768px) {
+    .lp-hero-split {
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-16);
+    }
+  }
+
+  .lp-hero-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .lp-hero-row {
+      grid-template-columns: 1.25fr 1fr;
+      gap: var(--space-12);
+    }
+  }
+
+  .lp-pill-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    margin-bottom: var(--space-4);
+  }
+
+  .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-whatsapp);
+    box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.4);
+  }
+
+  .lp-main-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 1.75rem + 1.5vw, 3.1rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 var(--space-4) 0;
+    letter-spacing: -0.02em;
+  }
+
+  .lp-main-lead {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.2rem);
+    color: oklch(0.92 0.01 75);
+    line-height: 1.6;
+    margin-bottom: var(--space-6);
+  }
+
+  .lp-main-lead strong {
+    color: #ffffff;
+  }
+
+  .lp-cta-action-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .lp-btn-primary-wa {
+    font-size: var(--text-base);
+    font-weight: 800;
+    padding: 16px 28px;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  }
+
+  .lp-call-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .call-lead {
+    font-size: var(--text-xs);
+    color: oklch(0.85 0.01 75);
+  }
+
+  .call-buttons-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .lp-call-pill {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .lp-call-pill:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #fff;
+  }
+
+  .lp-hero-google-proof {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(30, 24, 18, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 14px;
+    border-radius: var(--radius-md);
+    font-size: var(--text-xs);
+    color: #ffffff;
+  }
+
+  .stars-gold {
+    color: #fbbc04;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+  }
+
+  .proof-score strong {
+    color: #ffffff;
+  }
+
+  /* Hero Right Card */
+  .lp-hero-image-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45);
+    position: relative;
+  }
+
+  .hero-card-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-card-badge-overlay {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(20, 15, 10, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    font-size: var(--text-xs);
+    color: #fff;
+  }
+
+  .hero-card-badge-overlay strong {
+    color: var(--color-accent);
+  }
+
+  .hero-card-footer-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--color-paper-card);
+    color: var(--color-ink-primary);
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-4) var(--space-2);
+    text-align: center;
+  }
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-val {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+
+  .stat-lbl {
+    font-size: 0.6875rem;
+    color: var(--color-ink-secondary);
+    font-weight: 600;
+  }
+
+  /* 3. Steps */
+  .lp-steps-section {
+    padding-block: var(--space-8);
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .lp-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  @media (min-width: 768px) {
+    .lp-steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+  }
+
+  .lp-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+  }
+
+  .step-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--text-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--color-ink-primary);
+    margin: 0 0 2px 0;
+  }
+
+  .step-desc {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 4. Catálogo */
+  .lp-catalog-section {
+    padding-block: var(--space-12);
+  }
+
+  .lp-section-title-wrap {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto var(--space-8) auto;
+  }
+
+  .lp-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-accent);
+  }
+
+  .lp-section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 2.2rem);
+    font-weight: 800;
+    color: var(--color-ink-primary);
+    margin: var(--space-1) 0 var(--space-2) 0;
+  }
+
+  .lp-section-sub {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+  }
+
+  .lp-catalog-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 600px) {
+    .lp-catalog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .lp-catalog-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .lp-item-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .lp-item-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+
+  .lp-item-img-wrap {
+    aspect-ratio: 16/10;
+    position: relative;
+    background-color: var(--color-paper-subtle);
+  }
+
+  .lp-item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .lp-item-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-paper-dark);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: var(--radius-xs);
+  }
+
+  .lp-item-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .lp-item-title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin: 0 0 4px 0;
+  }
+
+  .lp-item-desc {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+    flex: 1;
+  }
+
+  .lp-item-cta-group {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2);
+  }
+
+  .lp-item-btn-wa {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding-block: 8px;
+    justify-content: center;
+  }
+
+  .lp-item-btn-call {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 8px 12px;
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    color: var(--color-ink-primary);
+    text-decoration: none;
+  }
+
+  .lp-item-btn-call:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* 5. Google Section */
+  .lp-google-full-section {
+    padding-block: var(--space-12);
+    background-color: var(--color-paper-subtle);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .lp-google-center-box {
+    max-width: 680px;
+    margin: 0 auto;
+    background-color: var(--color-paper-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .google-header-inline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .google-score-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .score-digit {
+    font-family: var(--font-display);
+    font-size: 1.85rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-ink-primary);
+  }
+
+  .stars-gold-big {
+    color: #fbbc04;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+  }
+
+  .google-center-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.6rem);
+    font-weight: 800;
+    color: var(--color-ink-primary);
+    margin: 0;
+  }
+
+  .google-center-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.55;
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  .lp-btn-google-talk {
+    font-size: var(--text-sm);
+    font-weight: 800;
+    padding: 12px 24px;
+  }
+
+  /* 6. FAQ */
+  .lp-faq-section {
+    padding-block: var(--space-12);
+  }
+
+  .lp-faq-wrap {
+    max-width: 720px;
+  }
+
+  .lp-faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .lp-faq-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+
+  .lp-faq-sum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3) var(--space-4);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--color-ink-primary);
+    list-style: none;
+  }
+
+  .lp-faq-sum::-webkit-details-marker {
+    display: none;
+  }
+
+  .sum-toggle {
+    color: var(--color-accent);
+    font-size: 1.2rem;
+  }
+
+  .lp-faq-content {
+    padding: 0 var(--space-4) var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+  }
+
+  .lp-faq-content p {
+    margin: 0;
+  }
+
+  /* 7. Mapa Integrado */
+  .lp-map-section {
+    padding-block: var(--space-12);
+    background-color: var(--color-paper-subtle);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .lp-map-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: stretch;
+  }
+
+  @media (min-width: 900px) {
+    .lp-map-split {
+      grid-template-columns: 1fr 1.3fr;
+    }
+  }
+
+  .lp-store-details-card {
+    background-color: var(--color-paper-card);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .store-name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    color: var(--color-ink-primary);
+    margin: 0;
+  }
+
+  .store-address-p {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .store-hours {
+    background-color: var(--color-paper-subtle);
+    border-left: 3px solid var(--color-accent);
+    padding: var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .store-hours strong {
+    color: var(--color-ink-primary);
+  }
+
+  .store-phones-grid strong {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-primary);
+    display: block;
+    margin-bottom: var(--space-2);
+  }
+
+  .phones-button-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .lp-phone-btn {
+    display: block;
+    padding: 8px 10px;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-ink-primary);
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .lp-phone-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .lp-phone-btn-wa {
+    grid-column: 1 / -1;
+    background-color: var(--color-whatsapp-surface);
+    border-color: var(--color-whatsapp);
+    color: var(--color-whatsapp);
+  }
+
+  .lp-phone-btn-wa:hover {
+    background-color: var(--color-whatsapp);
+    color: #fff;
+  }
+
+  .lp-btn-gps {
+    justify-content: center;
+    font-size: var(--text-sm);
+    padding-block: 12px;
+  }
+
+  .lp-map-embed-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1.5px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    min-height: 380px;
+  }
+
+  /* Footer */
+  .lp-footer {
+    background-color: #110d0a;
+    color: oklch(0.70 0.01 70);
+    font-size: 0.75rem;
+    padding-block: var(--space-6);
+    text-align: center;
+  }
+
+  .lp-footer p {
+    margin: 0 0 4px 0;
+  }
+
+  .lp-footer-numbers {
+    color: oklch(0.85 0.01 75);
+    font-weight: 600;
+  }
+
+  /* Sticky Mobile Bar */
+  .lp-sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-paper-card);
+    border-top: 1px solid var(--color-border);
+    padding: 8px var(--space-3);
+    z-index: 100;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: var(--space-2);
+  }
+
+  @media (min-width: 768px) {
+    .lp-sticky-bar {
+      display: none;
+    }
+  }
+
+  .lp-sticky-call {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--color-paper-dark);
+    color: #fff;
+    padding-block: 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: var(--text-xs);
+    text-decoration: none;
+  }
+
+  .lp-sticky-wa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--color-whatsapp);
+    color: #fff;
+    padding-block: 12px;
+    border-radius: var(--radius-sm);
+    font-weight: 800;
+    font-size: var(--text-xs);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+  }
+</style>

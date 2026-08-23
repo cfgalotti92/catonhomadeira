@@ -1,0 +1,348 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const tileProducts = [
+  {
+    name: 'Telha Capa e Bica Cerâmica Natural',
+    category: 'Telhas Coloniais',
+    speciesOrMaterial: 'Cerâmica Vermelha Natural',
+    finishOrType: 'Capa e Bica Tradicional',
+    dimensions: 'Comprimentos de 40, 47, 50 e 57 cm',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telha cerâmica colonial modelo capa e bica tradicional',
+    badge: 'Mais Vendida'
+  },
+  {
+    name: 'Telha Capa e Bica Mesclada',
+    category: 'Telhas Coloniais',
+    speciesOrMaterial: 'Cerâmica Queima Mesclada',
+    finishOrType: 'Capa e Bica com Nuances',
+    dimensions: '47 e 57 cm',
+    image: '/images/products/telhas/telha-capa-e-bica-mesclada.jpg',
+    imageAlt: 'Telhas cerâmicas mescladas capa e bica para telhado estilo colonial'
+  },
+  {
+    name: 'Telha Cerâmica Capa Caramelo',
+    category: 'Telhas Resinas / Esmaltadas',
+    speciesOrMaterial: 'Cerâmica Esmaltada / Resinada',
+    finishOrType: 'Tonalidade Caramelo Brilhante',
+    dimensions: '47 e 50 cm',
+    image: '/images/products/telhas/telha-capa-caramelo.jpg',
+    imageAlt: 'Telha capa caramelo com acabamento vitrificado',
+    badge: 'Impermeável'
+  },
+  {
+    name: 'Telha Cerâmica Capa Marfim',
+    category: 'Telhas Resinas / Esmaltadas',
+    speciesOrMaterial: 'Cerâmica Nobre Clara',
+    finishOrType: 'Tonalidade Marfim / Areia',
+    dimensions: '47 e 50 cm',
+    image: '/images/products/telhas/telha-capa-marfim.jpg',
+    imageAlt: 'Telha capa marfim de alto conforto térmico'
+  },
+  {
+    name: 'Telha Capa e Bica Plan',
+    category: 'Telhas Coloniais',
+    speciesOrMaterial: 'Cerâmica Plana',
+    finishOrType: 'Perfil Reto / Plan',
+    dimensions: 'Padrão colonial',
+    image: '/images/products/telhas/telha-capa-e-bica-plan.jpg',
+    imageAlt: 'Telha capa e bica perfil plan'
+  },
+  {
+    name: 'Verniz Impermeabilizante Telhacor',
+    category: 'Proteção & Acabamento',
+    speciesOrMaterial: 'Verniz Acrílico Base Água/Solvente',
+    finishOrType: 'Incolor / Cerâmica / Telha Nova',
+    dimensions: 'Galão 3,6L / Lata 18L',
+    image: '/images/products/telhas/verniz-telhacor.png',
+    imageAlt: 'Lata de verniz impermeabilizante telhacor para telhas cerâmicas'
+  }
+];
+
+const telhasFAQs = [
+  {
+    question: 'Quantas telhas de capa e bica são necessárias por metro quadrado de telhado?',
+    answer: 'O consumo médio de telhas de capa e bica fica entre 24 e 30 peças por m² de área inclinada (contando as capas e as bicas). O rendimento varia de acordo com o comprimento da telha (40, 47, 50 ou 57 cm) e a sobreposição exigida pelo caimento do telhado.'
+  },
+  {
+    question: 'Qual a vantagem da telha cerâmica esmaltada sobre a telha tradicional?',
+    answer: 'A telha esmaltada possui uma camada vítrea que impede a absorção de água, evitando o acúmulo de fungos, limo e sobrepeso na estrutura após chuvas fortes. Além disso, mantém o brilho e a tonalidade original por muitos anos.'
+  },
+  {
+    question: 'A Catonho Madeiras entrega telhas em paletes protegidos no Rio de Janeiro?',
+    answer: 'Sim. Nossas telhas são entregues organizadas e embaladas para minimizar qualquer risco de quebra durante o transporte e descarregamento na sua obra em Jacarepaguá e Zona Oeste do RJ.'
+  },
+  {
+    question: 'Vocês também vendem madeiramento compatível com as telhas?',
+    answer: 'Sim! Temos a solução completa para o seu telhado: vigas de maçaranduba, caibros, ripas na galga correta das telhas, vernizes impermeabilizantes e suportes de fixação.'
+  }
+];
+---
+
+<BaseLayout
+  title="Telhas Coloniais, Capa e Bica e Esmaltadas em Jacarepaguá RJ"
+  description="Loja de telhas em Jacarepaguá: Capa e Bica (40 a 57cm), telhas esmaltadas caramelo e marfim, telha romana e vernizes. Entrega rápida na Zona Oeste do RJ."
+>
+  <Breadcrumbs items={[{ label: 'Telhas & Coberturas' }]} />
+
+  <!-- Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Coberturas & Telhados · Jacarepaguá RJ</div>
+          <h1 class="cat-hero-title">Telhas Coloniais, Capa e Bica e Esmaltadas no Rio</h1>
+          <p class="cat-hero-desc">
+            Linha completa de telhas cerâmicas para construções residenciais e reformas. Modelos capa e bica tradicionais (40, 47, 50 e 57cm), opções mescladas, esmaltadas impermeabilizadas e vernizes de proteção com pronta entrega.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20telhas%20para%20a%20minha%20casa."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Orçar Telhas no WhatsApp</span>
+            </a>
+            <a href="#catalogo-telhas" class="btn btn-secondary">Ver Modelos</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Modelos em Destaque</h2>
+          <ul class="spec-box-list">
+            <li><strong>Capa e Bica Cerâmica:</strong> O formato clássico colonial em 4 tamanhos.</li>
+            <li><strong>Telhas Esmaltadas:</strong> Cores vitrificadas (Caramelo e Marfim) autolimpantes.</li>
+            <li><strong>Telhas Mescladas:</strong> Efeito rústico nobre e alta resistência térmica.</li>
+            <li><strong>Verniz Telhacor:</strong> Proteção hidrorrepelente contra umidade e limo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Catalog -->
+  <section class="section-py" id="catalogo-telhas" aria-labelledby="catalog-tiles-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-tiles-heading" class="section-title">Catálogo de Telhas & Acessórios</h2>
+        <p class="section-desc">
+          Produtos com garantia de queima uniforme, encaixe perfeito e alta durabilidade sob sol e chuva.
+        </p>
+      </div>
+
+      <ProductGrid columns={3}>
+        {tileProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Technical Table of Yield -->
+  <section class="guide-section section-py">
+    <div class="container container-narrow">
+      <div class="badge">Rendimento & Especificações</div>
+      <h2 class="guide-title">Tabela de Rendimento por Metro Quadrado (m²)</h2>
+      <p class="guide-text">
+        Use a tabela abaixo para estimar a quantidade necessária de telhas para a área inclinada da sua cobertura:
+      </p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr>
+              <th>Tipo de Telha</th>
+              <th>Consumo Médio / m²</th>
+              <th>Peso Médio Cobertura</th>
+              <th>Inclinação Mínima</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Capa e Bica (40/47cm)</strong></td>
+              <td>26 a 30 peças/m²</td>
+              <td>~50 kg/m²</td>
+              <td>25% a 30%</td>
+            </tr>
+            <tr>
+              <td><strong>Capa e Bica (50/57cm)</strong></td>
+              <td>24 a 26 peças/m²</td>
+              <td>~48 kg/m²</td>
+              <td>25% a 30%</td>
+            </tr>
+            <tr>
+              <td><strong>Telha Romana Cerâmica</strong></td>
+              <td>~16 peças/m²</td>
+              <td>~42 kg/m²</td>
+              <td>30%</td>
+            </tr>
+            <tr>
+              <td><strong>Telha Esmaltada Premium</strong></td>
+              <td>10 a 14 peças/m²</td>
+              <td>~35 kg/m²</td>
+              <td>30%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="guide-note">
+        <em>Recomendação técnica:</em> Acesse nosso guia sobre <a href="/blog/tipos-de-telhas-para-casa/">tipos de telhas cerâmicas e esmaltadas</a> para saber como escolher a cor e o modelo ideal para seu projeto.
+      </p>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <WhatsAppCTA
+    title="Precisa de ajuda para calcular as telhas da sua cobertura?"
+    subtitle="Envie a largura e o comprimento do seu telhado pelo WhatsApp. A equipe da Catonho Madeiras calcula o rendimento exato para você."
+    buttonText="Calcular Telhas no WhatsApp"
+    defaultMessage="Olá! Gostaria de uma cotação de telhas para a minha obra em Jacarepaguá."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={telhasFAQs} title="Dúvidas Frequentes sobre Telhas" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+
+  /* Guide Section */
+  .guide-section {
+    background-color: var(--color-paper-card);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .guide-title {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .guide-text {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-table-wrap {
+    overflow-x: auto;
+    margin-bottom: var(--space-6);
+  }
+
+  .guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-xs);
+  }
+
+  .guide-table th, .guide-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+
+  .guide-table th {
+    background-color: var(--color-paper-subtle);
+    font-weight: 600;
+    color: var(--color-ink-primary);
+  }
+
+  .guide-note {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+  }
+</style>

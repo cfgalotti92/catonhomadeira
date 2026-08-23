@@ -1,0 +1,281 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  title = 'Nossa Localização em Jacarepaguá',
+  subtitle = 'Pátio de madeiras e depósito de materiais localizado estrategicamente na Estrada do Catonho, 1205.'
+} = Astro.props;
+
+const mapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=Estrada+do+Catonho+1205+Jacarepagua+Rio+de+Janeiro+RJ';
+---
+
+<section class="location-section section-py" aria-labelledby="location-title">
+  <div class="container">
+    <div class="location-header">
+      <div class="badge">Visite Nossa Loja</div>
+      <h2 id="location-title" class="location-heading">{title}</h2>
+      <p class="location-subheading">{subtitle}</p>
+    </div>
+
+    <div class="location-grid">
+      <!-- Card com Dados de Contato e Horários -->
+      <div class="location-info-card">
+        <h3 class="info-card-title">Catonho Madeiras</h3>
+        <p class="info-card-desc">
+          Atendemos construtoras, telhadistas, marceneiros e clientes finais com retirada presencial no depósito ou entrega programada em toda a Zona Oeste e Grande Rio.
+        </p>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Endereço Completo:</strong>
+            <p>Estrada do Catonho, 1205 — Tanque / Jacarepaguá, Rio de Janeiro - RJ, CEP 22723-013</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Horário de Funcionamento:</strong>
+            <p>Segunda a Sexta: 08:00 às 18:00<br />Sábado: 08:00 às 12:00<br />Domingo e Feriados: Fechado</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Telefones e WhatsApp:</strong>
+            <p>
+              Fixo: <a href="tel:2124351454">(21) 2435-1454</a> / <a href="tel:2124234425">(21) 2423-4425</a><br />
+              WhatsApp: <a href="https://wa.me/5521979011647" target="_blank" rel="noopener noreferrer" class="whatsapp-accent">(21) 97901-1647</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-actions">
+          <a
+            href={mapsDirectionsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+            data-cta="maps_directions"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+            </svg>
+            <span>Traçar Rota no Google Maps</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Foto da Loja e Mapa de Acesso -->
+      <div class="location-visuals">
+        <div class="store-photo-wrap">
+          <img
+            src="/images/empresa/catonho-madeiras-loja-fachada.jpg"
+            alt="Fachada e loja da Catonho Madeiras na Estrada do Catonho"
+            width="600"
+            height="350"
+            loading="lazy"
+            decoding="async"
+            class="store-photo"
+          />
+          <div class="store-photo-caption">
+            <span>Estrada do Catonho, 1205 · Jacarepaguá / Tanque</span>
+          </div>
+        </div>
+
+        <div class="access-routes-card">
+          <h4 class="routes-title">Como Chegar:</h4>
+          <ul class="routes-list">
+            <li><strong>Via Transolímpica / Barra da Tijuca:</strong> Acesso rápido pela alça da Taquara / Sulacap direto para a Estrada do Catonho.</li>
+            <li><strong>Via Tanque / Pechincha:</strong> Subida direta da Estrada do Catonho sentido Sulacap.</li>
+            <li><strong>Via Zona Norte / Sulacap / Deodoro:</strong> Descida da serra do Catonho sentido Tanque/Jacarepaguá.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location-section {
+    background-color: var(--color-paper-subtle);
+  }
+
+  .location-header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .location-heading {
+    font-size: var(--text-3xl);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .location-subheading {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    max-width: 650px;
+    margin-inline: auto;
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .location-grid {
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .location-info-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .info-card-title {
+    font-size: var(--text-xl);
+    margin: 0;
+  }
+
+  .info-card-desc {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-normal);
+    margin: 0;
+  }
+
+  .info-item {
+    display: flex;
+    gap: var(--space-3);
+    font-size: var(--text-sm);
+    align-items: flex-start;
+  }
+
+  .info-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-accent-subtle);
+    color: var(--color-accent);
+    border-radius: var(--radius-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-item strong {
+    display: block;
+    color: var(--color-ink-primary);
+    margin-bottom: 2px;
+  }
+
+  .info-item p {
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .whatsapp-accent {
+    color: var(--color-whatsapp) !important;
+    font-weight: 600;
+  }
+
+  .info-actions {
+    margin-top: var(--space-2);
+  }
+
+  /* Visuals */
+  .location-visuals {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .store-photo-wrap {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-paper-muted);
+  }
+
+  .store-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .store-photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #fff;
+    padding: var(--space-4);
+    font-size: var(--text-xs);
+    font-weight: 500;
+  }
+
+  .access-routes-card {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-5);
+  }
+
+  .routes-title {
+    font-size: var(--text-sm);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-primary);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+  }
+
+  .routes-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.5;
+  }
+
+  .routes-list li strong {
+    color: var(--color-ink-primary);
+  }
+</style>

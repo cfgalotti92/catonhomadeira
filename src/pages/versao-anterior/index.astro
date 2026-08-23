@@ -1,0 +1,439 @@
+---
+// src/pages/versao-anterior/index.astro
+// Versão 1 Anterior (Condensada / Catálogo Inicial) para comparação
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+import StoreLocation from '../../components/ui/StoreLocation.astro';
+import BlogCard from '../../components/blog/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const latestPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+
+const categories = [
+  {
+    title: 'Madeiras para Telhado & Estrutura',
+    desc: 'Vigas, caibros, ripas, tábuas e sarrafos em Maçaranduba, Cumaru, Angelim e Tauari.',
+    href: '/madeiras/',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Vigas e caibros de maçaranduba no pátio da Catonho Madeiras'
+  },
+  {
+    title: 'Telhas & Coberturas',
+    desc: 'Telhas coloniais capa e bica (40 a 57cm), romanas, portuguesas e esmaltadas impermeabilizadas.',
+    href: '/telhas/',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telhas cerâmicas capa e bica para coberturas residenciais'
+  },
+  {
+    title: 'Portas de Madeira Maciça',
+    desc: 'Portas maciças de entrada, modelos pivotantes, portas frisadas e pranchetas para quartos.',
+    href: '/portas/',
+    image: '/images/products/portas/porta-macica-tauari-lambri.jpg',
+    imageAlt: 'Porta de madeira maciça Tauari em lambri diagonal'
+  },
+  {
+    title: 'Janelas Coloniais & Maxim-ar',
+    desc: 'Janelas de correr com veneziana e vidro, modelos em arco e módulos maxim-ar.',
+    href: '/janelas/',
+    image: '/images/products/janelas/janela-colonial-arco.jpg',
+    imageAlt: 'Janela de madeira colonial com arco e veneziana'
+  },
+  {
+    title: 'Ferragens & Conectores',
+    desc: 'Suportes ajustáveis para vigas de telhado, trilhos de correr, dobradiças reforçadas e parafusos.',
+    href: '/ferragens/',
+    image: '/images/products/ferragens/suporte-telhado-cobertura.jpg',
+    imageAlt: 'Suportes de aço galvanizado para fixação de vigas de telhado'
+  },
+  {
+    title: 'Fechaduras & Puxadores',
+    desc: 'Fechaduras de segurança com roseta, cilindro e puxadores em aço inox para portas maciças.',
+    href: '/fechaduras/',
+    image: '/images/products/fechaduras/fechadura-externa-roseta.jpg',
+    imageAlt: 'Fechadura externa cromada com roseta de segurança'
+  },
+  {
+    title: 'Churrasqueiras Pré-Moldadas',
+    desc: 'Churrasqueiras em concreto refratário com acabamento tijolinho, dutos prolongadores e bancadas.',
+    href: '/churrasqueiras/',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
+    imageAlt: 'Churrasqueira pré-moldada refratária para área gourmet'
+  }
+];
+
+const featuredProducts = [
+  {
+    name: 'Viga de Maçaranduba Bruta',
+    category: 'Madeiras Estruturais',
+    speciesOrMaterial: 'Maçaranduba (Paraju)',
+    finishOrType: 'Serrada Bruta',
+    dimensions: '14x6 cm / 15x5 cm / 20x7 cm',
+    image: '/images/products/madeiras/viga-macaranduba-bruta.jpg',
+    imageAlt: 'Viga de maçaranduba bruta para estrutura de telhado',
+    badge: 'Mais Vendido'
+  },
+  {
+    name: 'Caibro de Maçaranduba Aparelhado',
+    category: 'Madeiras para Telhado',
+    speciesOrMaterial: 'Maçaranduba',
+    finishOrType: 'Aparelhado / Lixado 4 Faces',
+    dimensions: '6x3,5 cm (nominal)',
+    image: '/images/products/madeiras/caibro-macaranduba.png',
+    imageAlt: 'Caibro de maçaranduba aparelhado para telhado aparente'
+  },
+  {
+    name: 'Telha Capa e Bica Cerâmica',
+    category: 'Telhas & Coberturas',
+    speciesOrMaterial: 'Cerâmica Natural Vermelha',
+    finishOrType: 'Capa e Bica Colonial',
+    dimensions: '40, 47, 50 e 57 cm',
+    image: '/images/products/telhas/telha-capa-e-bica.jpg',
+    imageAlt: 'Telha cerâmica colonial capa e bica para telhado',
+    badge: 'Pronta Entrega'
+  },
+  {
+    name: 'Porta Maciça Tauari Lambri Diagonal',
+    category: 'Portas de Madeira',
+    speciesOrMaterial: 'Madeira Maciça Tauari',
+    finishOrType: 'Lambri Diagonal Macho/Fêmea',
+    dimensions: '2,10 x 0,80 / 0,90 m',
+    image: '/images/products/portas/porta-macica-tauari-lambri.jpg',
+    imageAlt: 'Porta maciça tauari modelo lambri diagonal para entrada'
+  },
+  {
+    name: 'Deck de Cumaru Extra',
+    category: 'Pisos & Lazer',
+    speciesOrMaterial: 'Cumaru Nobre (Ipê-Champanhe)',
+    finishOrType: 'Aparelhado com Quebra-Canto',
+    dimensions: '10 x 2 cm (comprimentos variados)',
+    image: '/images/products/madeiras/deck-cumaru.png',
+    imageAlt: 'Pranchas de deck de cumaru aparelhado para piscinas'
+  },
+  {
+    name: 'Churrasqueira Pré-Moldada Tijolinho',
+    category: 'Churrasqueiras & Lazer',
+    speciesOrMaterial: 'Concreto Refratário',
+    finishOrType: 'Módulos de Encaixe com Refratário',
+    dimensions: 'Largura 65 / 75 / 85 cm',
+    image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
+    imageAlt: 'Churrasqueira pré-moldada em concreto refratário com acabamento tijolinho'
+  }
+];
+
+const homeFAQs = [
+  {
+    question: 'A Catonho Madeiras entrega em quais regiões do Rio de Janeiro?',
+    answer: 'Atendemos com caminhões de entrega própria em toda a Zona Oeste (Jacarepaguá, Taquara, Tanque, Pechincha, Freguesia, Anil, Curicica, Barra da Tijuca, Recreio dos Bandeirantes, Vargens), além de Jardim Sulacap, Vila Valqueire, Realengo, Deodoro e demais bairros do Grande Rio sob consulta.'
+  },
+  {
+    question: 'Como faço para solicitar um orçamento de lista de materiais?',
+    answer: 'Você pode clicar no botão do WhatsApp em nosso site e enviar a sua lista contendo as peças, bitolas, comprimentos e espécies desejadas, ou encaminhar seu projeto de cobertura. Nossa equipe calcula as metragens, frete e prazo de entrega rapidamente.'
+  },
+  {
+    question: 'A madeira comercializada possui procedência e certificação florestal?',
+    answer: 'Sim. Todas as madeiras de lei comercializadas pela Catonho Madeiras são 100% legalizadas e acompanhadas de DOF (Documento de Origem Florestal) emitido pelos órgãos ambientais competentes.'
+  },
+  {
+    question: 'Vocês vendem madeira bruta e também aparelhada?',
+    answer: 'Sim. Fornecemos vigas, caibros, ripas, tábuas e colunas tanto na versão bruta (serrada direta para estruturas ocultas) quanto na versão aparelhada (aplainada e lixada em 4 faces para estruturas aparentes, pergolados e decks).'
+  },
+  {
+    question: 'Qual o horário de funcionamento da loja física em Jacarepaguá?',
+    answer: 'Nossa loja e pátio na Estrada do Catonho, 1205 funcionam de Segunda a Sexta das 08:00 às 18:00 e aos Sábados das 08:00 às 12:00. Domingos e feriados não abrimos.'
+  }
+];
+---
+
+<BaseLayout
+  title="Versão Anterior (V1) · Catonho Madeiras"
+  description="Versão 1 anterior da página inicial da Catonho Madeiras mantida para comparação."
+>
+  <!-- Hero Section V1 -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <div class="badge">Madeireira em Jacarepaguá desde 1989</div>
+        <h1 class="hero-title">
+          Madeiras para Telhado, Telhas, Portas e Churrasqueiras no Rio
+        </h1>
+        <p class="hero-desc">
+          Fornecimento especializado em madeiras de lei certificadas (Maçaranduba, Cumaru, Angelim e Tauari), coberturas completas, ferragens e esquadrias com entrega rápida em toda a Zona Oeste e Grande Rio.
+        </p>
+
+        <div class="hero-cta-group">
+          <a
+            href="https://wa.me/5521979011647?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20madeiras%20e%20telhas."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-whatsapp"
+          >
+            <span>Orçamento no WhatsApp</span>
+          </a>
+          <a href="/orcamento/" class="btn btn-secondary">
+            <span>Enviar Lista de Peças</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-highlight">
+          <div class="highlight-header">
+            <strong>Destaque em Estoque</strong>
+            <span class="stock-badge">Pronta Entrega</span>
+          </div>
+          <p class="highlight-text">
+            Vigas e Caibros de Maçaranduba Brutos e Aparelhados cortados sob medida para seu telhado colonial ou aparente.
+          </p>
+          <ul class="highlight-list">
+            <li>✓ 100% Madeira de Lei com DOF Legal</li>
+            <li>✓ Vigas 14x6, 15x5, 20x7 e caibros 6x3,5</li>
+            <li>✓ Telhas capa e bica 40 a 57cm</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorias Grid V1 -->
+  <section class="section-py categories-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Linha Completa</div>
+        <h2 class="section-title">Categorias de Produtos</h2>
+        <p class="section-lead">Tudo o que sua obra precisa do madeiramento pesado ao acabamento final.</p>
+      </div>
+
+      <div class="categories-grid-v1">
+        {categories.map((cat) => (
+          <a href={cat.href} class="category-card-v1">
+            <div class="category-img-wrap">
+              <img src={cat.image} alt={cat.imageAlt} width="360" height="220" loading="lazy" class="category-img" />
+            </div>
+            <div class="category-body">
+              <h3 class="category-title">{cat.title}</h3>
+              <p class="category-desc">{cat.desc}</p>
+              <span class="category-link">Ver catálogo →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos em Destaque V1 -->
+  <section class="section-py featured-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="badge">Mais Vendidos</div>
+        <h2 class="section-title">Itens em Destaque no Pátio</h2>
+      </div>
+
+      <ProductGrid>
+        {featuredProducts.map((p) => (
+          <ProductCard
+            name={p.name}
+            category={p.category}
+            speciesOrMaterial={p.speciesOrMaterial}
+            finishOrType={p.finishOrType}
+            dimensions={p.dimensions}
+            image={p.image}
+            imageAlt={p.imageAlt}
+            badge={p.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Localização & FAQs V1 -->
+  <StoreLocation />
+  <FAQAccordion items={homeFAQs} title="Perguntas Frequentes sobre Madeiras e Entregas" />
+  <WhatsAppCTA />
+</BaseLayout>
+
+<style>
+  .version-banner {
+    background-color: var(--color-paper-dark);
+    color: #fff;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+    border-bottom: 1px solid var(--color-accent);
+  }
+
+  .version-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .version-switch-btn {
+    color: var(--color-accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .version-switch-btn:hover {
+    text-decoration: underline;
+  }
+
+  .hero-section {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+    }
+  }
+
+  .hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero-cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .hero-card-highlight {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-card);
+  }
+
+  .highlight-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+  }
+
+  .stock-badge {
+    background-color: var(--color-whatsapp-surface);
+    color: var(--color-whatsapp);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: var(--radius-xs);
+  }
+
+  .highlight-text {
+    font-size: var(--text-sm);
+    color: var(--color-ink-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .highlight-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-primary);
+    font-weight: 600;
+  }
+
+  .categories-grid-v1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 600px) {
+    .categories-grid-v1 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .categories-grid-v1 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .category-card-v1 {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-subtle);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .category-card-v1:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+
+  .category-img-wrap {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background-color: var(--color-paper-muted);
+  }
+
+  .category-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category-body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .category-title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    margin: 0 0 var(--space-2) 0;
+  }
+
+  .category-desc {
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    margin: 0 0 var(--space-3) 0;
+    flex: 1;
+  }
+
+  .category-link {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+</style>

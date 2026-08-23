@@ -1,0 +1,89 @@
+---
+import BlogCard from './BlogCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  currentSlug: string;
+  category: string;
+  allPosts: CollectionEntry<'blog'>[];
+}
+
+const { currentSlug, category, allPosts } = Astro.props;
+
+// Filter posts: first matching category, then others, excluding current
+const relatedPosts = allPosts
+  .filter((post) => post.id !== currentSlug)
+  .sort((a, b) => {
+    if (a.data.category === category && b.data.category !== category) return -1;
+    if (a.data.category !== category && b.data.category === category) return 1;
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  })
+  .slice(0, 2);
+---
+
+{relatedPosts.length > 0 && (
+  <section class="related-posts-section" aria-labelledby="related-heading">
+    <div class="related-header">
+      <h2 id="related-heading" class="related-heading">Artigos Recomendados</h2>
+      <a href="/blog/" class="related-all-link">Ver todo o blog →</a>
+    </div>
+
+    <div class="related-grid">
+      {relatedPosts.map((post) => (
+        <BlogCard
+          title={post.data.title}
+          description={post.data.description}
+          slug={post.id}
+          pubDate={post.data.pubDate}
+          category={post.data.category}
+          image={post.data.image}
+          imageAlt={post.data.imageAlt}
+          readingTime={post.data.readingTime}
+        />
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-posts-section {
+    margin-top: var(--space-12);
+    padding-top: var(--space-10);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-6);
+  }
+
+  .related-heading {
+    font-size: var(--text-2xl);
+    margin: 0;
+  }
+
+  .related-all-link {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .related-all-link:hover {
+    text-decoration: underline;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 768px) {
+    .related-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

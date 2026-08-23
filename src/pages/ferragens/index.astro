@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const hardwareProducts = [
+  {
+    name: 'Suporte Ajustável para Vigas (Tipo Aberto)',
+    category: 'Suportes Estruturais',
+    speciesOrMaterial: 'Aço Carbono Galvanizado',
+    finishOrType: 'Tipo Aberto Ajustável (Cód. 799)',
+    dimensions: 'Para vigas de 5 a 10 cm de espessura',
+    image: '/images/products/ferragens/suporte-ajustavel-viga-aberto.jpg',
+    imageAlt: 'Suporte ajustável de aço tipo aberto para fixação de vigas de telhado',
+    badge: 'Estrutural'
+  },
+  {
+    name: 'Suporte Ajustável para Vigas (Tipo Fechado)',
+    category: 'Suportes Estruturais',
+    speciesOrMaterial: 'Aço Galvanizado Reforçado',
+    finishOrType: 'Tipo Fechado com Aba de Apoio (Cód. 798)',
+    dimensions: 'Para vigas pesadas 14x6 / 20x7 cm',
+    image: '/images/products/ferragens/suporte-ajustavel-viga-fechado.jpg',
+    imageAlt: 'Suporte ajustável tipo fechado para vigas mestras de madeira'
+  },
+  {
+    name: 'Suporte para Telhado de Cobertura',
+    category: 'Ferragens de Cobertura',
+    speciesOrMaterial: 'Aço Zincado Anticorrosivo',
+    finishOrType: 'Fixação de Terças e Caibros (Cód. 837)',
+    dimensions: '70 x 70 mm',
+    image: '/images/products/ferragens/suporte-telhado-cobertura.jpg',
+    imageAlt: 'Suporte de aço para travamento de cobertura e caibros'
+  }
+];
+
+const ferragensFAQs = [
+  {
+    question: 'Por que usar suportes metálicos na fixação de vigas de madeira?',
+    answer: 'Os suportes galvanizados distribuem a carga das vigas com maior segurança sobre pilares ou paredes, evitam o contato direto da madeira com a umidade da alvenaria e garantem travamento contra rajadas de vento.'
+  },
+  {
+    question: 'Vocês têm parafusos e conectores para telhados e portas?',
+    answer: 'Sim! Comercializamos parafusos autobrocantes, parafusos para telhas de fibrocimento, dobradiças de aço reforçado, trilhos para portas de correr e arames galvanizados.'
+  }
+];
+---
+
+<BaseLayout
+  title="Ferragens para Madeira e Telhados em Jacarepaguá RJ"
+  description="Suportes ajustáveis para vigas (aberto e fechado), conectores de telhado, dobradiças reforçadas e parafusos no Rio de Janeiro. Catonho Madeiras."
+>
+  <Breadcrumbs items={[{ label: 'Ferragens Estruturais' }]} />
+
+  <!-- Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Fixação & Segurança Estrutural</div>
+          <h1 class="cat-hero-title">Ferragens, Suportes para Vigas e Conectores de Telhado no RJ</h1>
+          <p class="cat-hero-desc">
+            Segurança máxima para a armação do seu telhado e montagem de esquadrias. Suportes ajustáveis em aço galvanizado, conectores de cobertura, dobradiças reforçadas e parafusos estruturais a pronta entrega.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20ferragens%20e%20suportes%20para%20vigas."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Cotar Ferragens no WhatsApp</span>
+            </a>
+            <a href="#catalogo-ferragens" class="btn btn-secondary">Ver Catálogo</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Itens em Destaque</h2>
+          <ul class="spec-box-list">
+            <li><strong>Suportes Ajustáveis de Vigas:</strong> Tipo aberto e fechado.</li>
+            <li><strong>Conectores de Telhado:</strong> Fixação de terças e caibros.</li>
+            <li><strong>Dobradiças Reforçadas:</strong> Para portas pesadas de madeira maciça.</li>
+            <li><strong>Parafusos Estruturais:</strong> Para madeira, telhas e alvenaria.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog -->
+  <section class="section-py" id="catalogo-ferragens" aria-labelledby="catalog-hw-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-hw-heading" class="section-title">Catálogo de Ferragens</h2>
+        <p class="section-desc">
+          Conectores em aço de alta espessura com tratamento antiferrugem e galvanização durável.
+        </p>
+      </div>
+
+      <ProductGrid columns={3}>
+        {hardwareProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- WhatsApp CTA -->
+  <WhatsAppCTA
+    title="Precisa incluir as ferragens no seu pedido de madeiras?"
+    subtitle="Adicione suportes de vigas e parafusos no mesmo pedido de madeiramento e receba tudo junto no seu canteiro de obras."
+    buttonText="Pedir Ferragens no WhatsApp"
+    defaultMessage="Olá! Gostaria de consultar os suportes e ferragens para vigas de madeira na Catonho Madeiras."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={ferragensFAQs} title="Dúvidas Frequentes sobre Ferragens" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const siteUrl = 'https://catonhomadeira.com.br';
+
+const fullBreadcrumbs = [
+  { label: 'Início', href: '/' },
+  ...items
+];
+
+const schemaItems = fullBreadcrumbs.map((item, index) => ({
+  "@type": "ListItem",
+  "position": index + 1,
+  "name": item.label,
+  "item": item.href ? (item.href.startsWith('http') ? item.href : `${siteUrl}${item.href}`) : undefined
+}));
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": schemaItems
+};
+---
+
+<nav class="breadcrumbs" aria-label="Navegação Estrutural (Breadcrumbs)">
+  <div class="container">
+    <ol class="breadcrumbs-list">
+      {fullBreadcrumbs.map((item, index) => {
+        const isLast = index === fullBreadcrumbs.length - 1;
+        return (
+          <li class="breadcrumbs-item">
+            {isLast || !item.href ? (
+              <span class="breadcrumbs-current" aria-current="page">{item.label}</span>
+            ) : (
+              <a href={item.href} class="breadcrumbs-link">{item.label}</a>
+            )}
+            {!isLast && <span class="breadcrumbs-separator" aria-hidden="true">/</span>}
+          </li>
+        );
+      })}
+    </ol>
+  </div>
+</nav>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+
+<style>
+  .breadcrumbs {
+    padding-block: var(--space-3);
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border-hairline);
+    font-size: var(--text-xs);
+  }
+
+  .breadcrumbs-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: var(--space-2);
+  }
+
+  .breadcrumbs-item {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .breadcrumbs-link {
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .breadcrumbs-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .breadcrumbs-current {
+    color: var(--color-ink-primary);
+    font-weight: 600;
+  }
+
+  .breadcrumbs-separator {
+    color: var(--color-border-strong);
+    user-select: none;
+  }
+</style>

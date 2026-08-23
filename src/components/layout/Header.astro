@@ -1,0 +1,456 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const productCategories = [
+  { label: 'Madeiras para Telhado & Estrutura', href: '/madeiras/', desc: 'Vigas, caibros, ripas e pranchas' },
+  { label: 'Telhas & Coberturas', href: '/telhas/', desc: 'Coloniais, romanas e esmaltadas' },
+  { label: 'Portas de Madeira Maciça', href: '/portas/', desc: 'Pivotantes, lisas e em lambri' },
+  { label: 'Janelas Coloniais & Maxim-ar', href: '/janelas/', desc: 'Janelas de correr e venezianas' },
+  { label: 'Churrasqueiras Pré-Moldadas', href: '/churrasqueiras/', desc: 'Concreto refratário e acabamento tijolinho' },
+  { label: 'Ferragens & Conectores', href: '/ferragens/', desc: 'Suportes para vigas, trilhos e parafusos' },
+  { label: 'Fechaduras & Puxadores', href: '/fechaduras/', desc: 'Fechaduras de segurança e puxadores inox' }
+];
+
+const isProductsActive = productCategories.some(cat => currentPath.startsWith(cat.href));
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  return currentPath.startsWith(href);
+};
+---
+
+<header class="site-header" id="site-header">
+  <!-- Top Utility Bar: Endereço & Contato Direto -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-location">
+        <svg class="icon-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>Estrada do Catonho, 1205 — Jacarepaguá, RJ</span>
+      </div>
+      <div class="top-bar-contact">
+        <a href="tel:2124351454" class="top-link" aria-label="Ligar para telefone fixo">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>(21) 2435-1454</span>
+        </a>
+        <span class="divider" aria-hidden="true">|</span>
+        <a href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="top-link top-link-whatsapp" aria-label="Chamar no WhatsApp">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+          </svg>
+          <span>WhatsApp: (21) 97901-1647</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <div class="main-bar">
+    <div class="container main-bar-inner">
+      <!-- Logo -->
+      <a href="/" class="brand-logo" aria-label="Catonho Madeiras — Página Inicial">
+        <img src="/images/logo.png" alt="Logo Catonho Madeiras" width="46" height="46" class="brand-logo-img" />
+        <div class="brand-text">
+          <span class="brand-name">CATONHO</span>
+          <span class="brand-tagline">MADEIRAS E TELHAS · DESDE 1989</span>
+        </div>
+      </a>
+
+      <!-- Desktop Clean Nav with Submenu -->
+      <nav class="desktop-nav" aria-label="Navegação Principal">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/" class:list={['nav-link', { 'is-active': isActive('/') }]} aria-current={isActive('/') ? 'page' : undefined}>
+              Início
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/sobre/" class:list={['nav-link', { 'is-active': isActive('/sobre/') }]} aria-current={isActive('/sobre/') ? 'page' : undefined}>
+              Quem Somos
+            </a>
+          </li>
+
+          <!-- Dropdown Produtos -->
+          <li class="nav-item nav-item-has-submenu">
+            <button class:list={['nav-link', 'nav-link-dropdown-trigger', { 'is-active': isProductsActive }]} aria-haspopup="true" aria-expanded="false" id="products-menu-btn">
+              <span>Produtos</span>
+              <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-panel" aria-label="Categorias de Produtos">
+              <ul class="dropdown-grid">
+                {productCategories.map((cat) => (
+                  <li class="dropdown-item">
+                    <a href={cat.href} class:list={['dropdown-item-link', { 'is-active': isActive(cat.href) }]}>
+                      <strong class="dropdown-item-title">{cat.label}</strong>
+                      <span class="dropdown-item-desc">{cat.desc}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div class="dropdown-footer">
+                <span>Precisa de uma lista completa para o seu projeto?</span>
+                <a href="/orcamento/" class="dropdown-footer-link">Cotar Tudo Junto →</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a href="/orcamento/" class:list={['nav-link', { 'is-active': isActive('/orcamento/') }]} aria-current={isActive('/orcamento/') ? 'page' : undefined}>
+              Orçamento Online
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/blog/" class:list={['nav-link', { 'is-active': isActive('/blog/') }]} aria-current={isActive('/blog/') ? 'page' : undefined}>
+              Blog
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/contato/" class:list={['nav-link', { 'is-active': isActive('/contato/') }]} aria-current={isActive('/contato/') ? 'page' : undefined}>
+              Contato
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Actions & Mobile Trigger -->
+      <div class="header-actions">
+        <a href="/orcamento/" class="btn btn-primary btn-quote-header" data-cta="header_quote">
+          <span>Solicitar Orçamento</span>
+        </a>
+        <button
+          class="mobile-menu-trigger"
+          id="mobile-nav-toggle"
+          aria-label="Abrir menu de navegação"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-paper-card);
+    border-bottom: 1px solid var(--color-border-hairline);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  /* Top Bar */
+  .top-bar {
+    background-color: var(--color-paper-dark);
+    color: var(--color-ink-inverse-muted);
+    font-size: var(--text-xs);
+    padding-block: 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .top-bar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .top-bar-location {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .icon-pin {
+    color: var(--color-accent);
+  }
+
+  .top-bar-contact {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .top-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--color-ink-inverse-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .top-link:hover {
+    color: var(--color-ink-inverse);
+  }
+
+  .top-link-whatsapp {
+    color: oklch(0.85 0.12 142);
+    font-weight: 500;
+  }
+
+  .top-link-whatsapp:hover {
+    color: oklch(0.95 0.15 142);
+  }
+
+  .divider {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Main Bar */
+  .main-bar {
+    padding-block: var(--space-3);
+  }
+
+  .main-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  /* Brand Logo */
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+    color: var(--color-ink-primary);
+  }
+
+  .brand-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-primary);
+  }
+
+  .brand-tagline {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+
+  /* Desktop Nav */
+  .desktop-nav {
+    display: none;
+  }
+
+  @media (min-width: 980px) {
+    .desktop-nav {
+      display: block;
+    }
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-accent);
+    background-color: var(--color-paper-subtle);
+  }
+
+  .nav-link.is-active {
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  /* Dropdown Submenu */
+  .nav-item-has-submenu:hover .dropdown-panel,
+  .nav-item-has-submenu:focus-within .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown-chevron {
+    transition: transform var(--transition-fast);
+  }
+
+  .nav-item-has-submenu:hover .dropdown-chevron,
+  .nav-item-has-submenu:focus-within .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-panel {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 480px;
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-hover);
+    padding: var(--space-4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+    z-index: 110;
+  }
+
+  .dropdown-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .dropdown-item-link {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+  }
+
+  .dropdown-item-link:hover {
+    background-color: var(--color-paper-subtle);
+  }
+
+  .dropdown-item-title {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink-primary);
+  }
+
+  .dropdown-item-link:hover .dropdown-item-title {
+    color: var(--color-accent);
+  }
+
+  .dropdown-item-desc {
+    font-size: var(--text-xs);
+    color: var(--color-ink-muted);
+  }
+
+  .dropdown-footer {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border-hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+  }
+
+  .dropdown-footer-link {
+    font-weight: 700;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .dropdown-footer-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Header Actions */
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .btn-quote-header {
+    display: none;
+  }
+
+  @media (min-width: 640px) {
+    .btn-quote-header {
+      display: inline-flex;
+      padding: 9px 18px;
+      font-size: var(--text-sm);
+    }
+  }
+
+  /* Mobile Trigger */
+  .mobile-menu-trigger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 38px;
+    height: 38px;
+    padding: 8px 6px;
+    background-color: var(--color-paper-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  @media (min-width: 980px) {
+    .mobile-menu-trigger {
+      display: none;
+    }
+  }
+
+  .hamburger-bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-ink-primary);
+    border-radius: 2px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+</style>

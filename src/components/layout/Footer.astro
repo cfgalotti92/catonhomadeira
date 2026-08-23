@@ -1,0 +1,178 @@
+---
+const currentYear = new Date().getFullYear();
+
+const quickLinks = [
+  { label: 'Madeiras', href: '/madeiras/' },
+  { label: 'Telhas', href: '/telhas/' },
+  { label: 'Portas', href: '/portas/' },
+  { label: 'Janelas', href: '/janelas/' },
+  { label: 'Churrasqueiras', href: '/churrasqueiras/' },
+  { label: 'Ferragens', href: '/ferragens/' },
+  { label: 'Fechaduras', href: '/fechaduras/' },
+  { label: 'Orçamento', href: '/orcamento/' },
+  { label: 'Sobre', href: '/sobre/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contato', href: '/contato/' },
+];
+---
+
+<footer class="site-footer" id="colophon">
+  <div class="container footer-compact-container">
+    <div class="footer-compact-main">
+      <div class="footer-brand-mini">
+        <a href="/" class="footer-logo-link">
+          <img src="/images/logo.png" alt="Logo Catonho Madeiras" width="32" height="32" class="footer-logo-img" />
+          <span class="footer-brand-title">CATONHO MADEIRAS</span>
+        </a>
+        <p class="footer-address-text">
+          Estrada do Catonho, 1205 — Jacarepaguá, Rio de Janeiro - RJ · <strong>(21) 2435-1454</strong> / <strong>(21) 97901-1647</strong>
+        </p>
+      </div>
+
+      <nav class="footer-nav-mini" aria-label="Links rápidos do rodapé">
+        {quickLinks.map((item) => (
+          <a href={item.href} class="footer-mini-link">{item.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer-compact-bottom">
+      <p class="copyright-text">
+        © {currentYear} Catonho Madeiras. Tradição desde 1989. Madeiras com DOF florestal legalizado.
+      </p>
+      <div class="footer-extra-links">
+        <a href="/orcamento/">Solicitar Cotação</a>
+        <span>·</span>
+        <a href="/versao-anterior/">Ver Versão Anterior (V1)</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-paper-dark);
+    color: var(--color-ink-inverse);
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-compact-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .footer-compact-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .footer-compact-main {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-6);
+    }
+  }
+
+  .footer-brand-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+  }
+
+  .footer-logo-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #fff;
+  }
+
+  .footer-brand-title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-address-text {
+    font-size: var(--text-xs);
+    color: oklch(0.80 0.01 75);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .footer-address-text strong {
+    color: #fff;
+  }
+
+  .footer-nav-mini {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .footer-mini-link {
+    font-size: var(--text-xs);
+    color: oklch(0.85 0.01 75);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-mini-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .footer-compact-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.6875rem;
+    color: oklch(0.65 0.02 70);
+  }
+
+  @media (min-width: 640px) {
+    .footer-compact-bottom {
+      flex-direction: row;
+    }
+  }
+
+  .copyright-text {
+    margin: 0;
+  }
+
+  .footer-extra-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .footer-extra-links a {
+    color: oklch(0.80 0.01 75);
+    text-decoration: none;
+  }
+
+  .footer-extra-links a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+</style>

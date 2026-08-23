@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const windowProducts = [
+  {
+    name: 'Janela Colonial com Arco (Vidro e Veneziana)',
+    category: 'Janelas Coloniais',
+    speciesOrMaterial: 'Madeira Maciça de Lei',
+    finishOrType: 'Arco Superior com Folhas Duplas',
+    dimensions: '1,20 x 1,20 m / 1,20 x 1,60 m',
+    image: '/images/products/janelas/janela-colonial-arco.jpg',
+    imageAlt: 'Janela colonial de madeira maciça em arco com venezianas articuladas',
+    badge: 'Colonial Nobre'
+  },
+  {
+    name: 'Janela Colonial Reta (Vidro e Veneziana)',
+    category: 'Janelas Coloniais',
+    speciesOrMaterial: 'Madeira Maciça',
+    finishOrType: 'Bandeira Reta com 4 Folhas',
+    dimensions: '1,20 x 1,60 m / 1,00 x 1,50 m',
+    image: '/images/products/janelas/janela-colonial-reta.jpg',
+    imageAlt: 'Janela de madeira colonial reta com veneziana e vidro'
+  },
+  {
+    name: 'Janela de Folhas de Correr',
+    category: 'Janelas de Correr',
+    speciesOrMaterial: 'Madeira Selecionada',
+    finishOrType: 'Trilho Embutido com Corrediças',
+    dimensions: '1,20 x 1,50 m / 1,20 x 2,00 m',
+    image: '/images/products/janelas/janela-folha-correr.jpg',
+    imageAlt: 'Janela de madeira com folhas de correr para sala e quarto'
+  },
+  {
+    name: 'Janela Maxim-Ar de Madeira',
+    category: 'Janelas para Banheiro & Cozinha',
+    speciesOrMaterial: 'Madeira Maciça Resistente à Umidade',
+    finishOrType: 'Braço Articulado e Trinco de Pressão',
+    dimensions: '0,60 x 0,60 m / 0,80 x 0,80 m',
+    image: '/images/products/janelas/janela-max-ar.jpg',
+    imageAlt: 'Janela maxim-ar de madeira maciça para banheiro ou circulação'
+  }
+];
+
+const janelasFAQs = [
+  {
+    question: 'As janelas de madeira já vêm com os vidros instalados?',
+    answer: 'As janelas são comercializadas na estrutura de madeira (com as folhas de vidro e venezianas prontas para envidraçamento no local da obra). Isso evita riscos de trincas e quebras durante o transporte do caminhão.'
+  },
+  {
+    question: 'Qual o cuidado necessário para janelas de madeira expostas ao sol e à chuva?',
+    answer: 'Recomendamos a aplicação de seladora e pelo menos duas a três demãos de verniz naval com filtro solar ou stain hidrorrepelente antes da instalação final. A manutenção periódica garante que a madeira mantenha seu brilho e não empene.'
+  },
+  {
+    question: 'Quais medidas de maxim-ar vocês possuem a pronta entrega?',
+    answer: 'Temos em estoque frequente os tamanhos 60x60 cm e 80x80 cm em madeira maciça, ideais para banheiros, lavabos, despensas e cozinhas.'
+  }
+];
+---
+
+<BaseLayout
+  title="Janelas de Madeira Coloniais e Maxim-ar em Jacarepaguá RJ"
+  description="Janelas coloniais de madeira maciça (arco e reta), janelas de correr e maxim-ar 60x60 / 80x80 no Rio de Janeiro. Loja na Estrada do Catonho, 1205."
+>
+  <Breadcrumbs items={[{ label: 'Janelas de Madeira' }]} />
+
+  <!-- Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Esquadrias & Janelas · Jacarepaguá</div>
+          <h1 class="cat-hero-title">Janelas de Madeira Coloniais, Correr e Maxim-ar no RJ</h1>
+          <p class="cat-hero-desc">
+            Ventilação natural, conforto térmico e elegância clássica. Modelos coloniais em arco e reto com venezianas articuladas, janelas de correr para salas e módulos maxim-ar com excelente vedação.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20modelos%20de%20janelas%20de%20madeira."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Orçar Janelas no WhatsApp</span>
+            </a>
+            <a href="#catalogo-janelas" class="btn btn-secondary">Ver Modelos</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Modelos Disponíveis</h2>
+          <ul class="spec-box-list">
+            <li><strong>Colonial em Arco:</strong> Vidro e veneziana para fachadas tradicionais.</li>
+            <li><strong>Colonial Reta:</strong> 4 folhas articuladas com encaixe robusto.</li>
+            <li><strong>Maxim-Ar:</strong> Tamanhos 60x60 e 80x80cm para banheiros.</li>
+            <li><strong>Janelas de Correr:</strong> Praticidade para salas e quartos.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Catalog -->
+  <section class="section-py" id="catalogo-janelas" aria-labelledby="catalog-windows-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-windows-heading" class="section-title">Catálogo de Janelas de Madeira</h2>
+        <p class="section-desc">
+          Madeira maciça usinada no esquadro, pronta para receber pintura, verniz ou seladora.
+        </p>
+      </div>
+
+      <ProductGrid columns={3}>
+        {windowProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Contextual CTA -->
+  <WhatsAppCTA
+    title="Deseja combinar janelas coloniais com suas portas de madeira?"
+    subtitle="Traga suas medidas de vãos para a Catonho Madeiras. Montamos o pacote completo de esquadrias para a sua casa no Rio."
+    buttonText="Solicitar Cotação de Janelas"
+    defaultMessage="Olá! Gostaria de consultar os valores das janelas de madeira na Catonho Madeiras."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={janelasFAQs} title="Dúvidas Frequentes sobre Janelas de Madeira" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+</style>

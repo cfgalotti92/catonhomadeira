@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/ui/Breadcrumbs.astro';
+import ProductCard from '../../components/ui/ProductCard.astro';
+import ProductGrid from '../../components/ui/ProductGrid.astro';
+import WhatsAppCTA from '../../components/ui/WhatsAppCTA.astro';
+import FAQAccordion from '../../components/ui/FAQAccordion.astro';
+
+const doorProducts = [
+  {
+    name: 'Porta Maciça Tauari Lambri Diagonal',
+    category: 'Portas de Entrada',
+    speciesOrMaterial: 'Madeira Maciça Tauari',
+    finishOrType: 'Lambri Diagonal Macho/Fêmea',
+    dimensions: '2,10 x 0,80 / 0,90 / 1,00 m',
+    image: '/images/products/portas/porta-macica-tauari-lambri.jpg',
+    imageAlt: 'Porta de madeira maciça tauari em modelo lambri diagonal',
+    badge: 'Mais Vendida'
+  },
+  {
+    name: 'Porta Maciça com Almofadas',
+    category: 'Portas de Entrada & Sala',
+    speciesOrMaterial: 'Madeira Maciça de Lei',
+    finishOrType: 'Almofadas Entalhadas Clássicas',
+    dimensions: '2,10 x 0,80 / 0,90 m',
+    image: '/images/products/portas/porta-macica-almofada.png',
+    imageAlt: 'Porta de madeira maciça com almofadas para fachada residencial'
+  },
+  {
+    name: 'Caixonete / Aduela de Tauari 13cm',
+    category: 'Batentes & Estrutura',
+    speciesOrMaterial: 'Tauari Maciço',
+    finishOrType: 'Aparelhado com Encaixe',
+    dimensions: 'Larguras de 13, 15 e 18 cm',
+    image: '/images/products/madeiras/caixonete-tauari.png',
+    imageAlt: 'Caixonete e aduela de tauari para montagem de portas'
+  },
+  {
+    name: 'Fechadura Externa com Roseta de Segurança',
+    category: 'Fechaduras & Ferragens',
+    speciesOrMaterial: 'Aço / Latão Cromado',
+    finishOrType: 'Cilindro de Segurança com Roseta',
+    dimensions: 'Broca 40 / 55 mm',
+    image: '/images/products/fechaduras/fechadura-externa-roseta.jpg',
+    imageAlt: 'Fechadura externa com acabamento cromado para portas maciças'
+  }
+];
+
+const portasFAQs = [
+  {
+    question: 'Qual a diferença entre porta maciça e porta frisada?',
+    answer: 'A porta maciça é construída 100% em tábuas de madeira de lei maciça, oferecendo máxima segurança, peso e isolamento acústico para a entrada principal. A porta frisada possui estrutura semi-oca com lâmina frisada decorativa, sendo mais leve e indicada para quartos e ambientes internos.'
+  },
+  {
+    question: 'Vocês vendem o kit completo com aduela (caixonete), guarnições e fechadura?',
+    answer: 'Sim! Na Catonho Madeiras você pode montar o kit completo: a folha da porta, a aduela na largura exata da sua parede (13, 15 ou 18cm), as guarnições (alizares), dobradiças reforçadas e a fechadura de sua preferência.'
+  },
+  {
+    question: 'Como escolher a largura ideal da porta de entrada?',
+    answer: 'Para portas de entrada principal, a largura padrão mais recomendada é de 80 cm a 90 cm (ou 1,00 m a 1,20 m para modelos pivotantes). Para quartos e salas internas, portas de 70 cm a 80 cm são as mais comuns.'
+  }
+];
+---
+
+<BaseLayout
+  title="Portas de Madeira Maciça e Frisadas em Jacarepaguá RJ"
+  description="Portas maciças de Tauari e Angelim, portas pivotantes, frisadas, aduelas de 13/15cm e fechaduras de segurança. Loja e depósito na Estrada do Catonho."
+>
+  <Breadcrumbs items={[{ label: 'Portas de Madeira' }]} />
+
+  <!-- Hero -->
+  <header class="cat-hero section-py">
+    <div class="container">
+      <div class="cat-hero-grid">
+        <div class="cat-hero-text">
+          <div class="badge">Esquadrias de Madeira Maciça · Jacarepaguá</div>
+          <h1 class="cat-hero-title">Portas de Madeira Maciça, Pivotantes e Frisadas no RJ</h1>
+          <p class="cat-hero-desc">
+            Segurança, beleza natural e isolamento acústico para sua residência. Portas maciças de Tauari e Angelim para entrada principal, modelos frisados e pranchetas para quartos, além de kits completos com aduelas e fechaduras.
+          </p>
+          <div class="cat-hero-actions">
+            <a
+              href="https://wa.me/5521979011647?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20modelos%20e%20pre%C3%A7os%20de%20portas%20de%20madeira."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-whatsapp"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+              </svg>
+              <span>Consultar Portas no WhatsApp</span>
+            </a>
+            <a href="#catalogo-portas" class="btn btn-secondary">Ver Modelos</a>
+          </div>
+        </div>
+        <div class="cat-hero-spec-box">
+          <h2 class="spec-box-title">Destaques da Categoria</h2>
+          <ul class="spec-box-list">
+            <li><strong>Portas Maciças:</strong> Lambri diagonal e almofada em madeira Tauari.</li>
+            <li><strong>Kits de Aduelas:</strong> Batentes em madeira maciça com larguras de 13 a 18cm.</li>
+            <li><strong>Portas Pivotantes:</strong> Modelos imponentes para fachada com puxador inox.</li>
+            <li><strong>Fechaduras de Segurança:</strong> Cilindros e rosetas cromadas para instalação.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Product Catalog -->
+  <section class="section-py" id="catalogo-portas" aria-labelledby="catalog-doors-heading">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="catalog-doors-heading" class="section-title">Modelos de Portas & Acessórios</h2>
+        <p class="section-desc">
+          Madeiras secas de excelente usinagem, prontas para receber seladora, verniz ou acabamento personalizado.
+        </p>
+      </div>
+
+      <ProductGrid columns={3}>
+        {doorProducts.map((prod) => (
+          <ProductCard
+            name={prod.name}
+            category={prod.category}
+            speciesOrMaterial={prod.speciesOrMaterial}
+            finishOrType={prod.finishOrType}
+            dimensions={prod.dimensions}
+            image={prod.image}
+            imageAlt={prod.imageAlt}
+            badge={prod.badge}
+          />
+        ))}
+      </ProductGrid>
+    </div>
+  </section>
+
+  <!-- Contextual CTA -->
+  <WhatsAppCTA
+    title="Precisa de portas sob medida ou kit completo de montagem?"
+    subtitle="Envie a relação de vãos das suas portas pelo WhatsApp. Ajudamos a selecionar as folhas, batentes e fechaduras ideais para sua obra."
+    buttonText="Falar com Especialista em Portas"
+    defaultMessage="Olá! Gostaria de um orçamento de portas de madeira na Catonho Madeiras."
+  />
+
+  <!-- FAQs -->
+  <FAQAccordion items={portasFAQs} title="Perguntas Frequentes sobre Portas de Madeira" />
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    background-color: var(--color-paper-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cat-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .cat-hero-grid {
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  .cat-hero-title {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-tight);
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-3);
+  }
+
+  @media (min-width: 768px) {
+    .cat-hero-title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cat-hero-desc {
+    font-size: var(--text-base);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .cat-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .cat-hero-spec-box {
+    background-color: var(--color-paper-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-subtle);
+  }
+
+  .spec-box-title {
+    font-size: var(--text-lg);
+    font-family: var(--font-display);
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+    color: var(--color-ink-primary);
+  }
+
+  .spec-box-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    color: var(--color-ink-secondary);
+    line-height: 1.4;
+  }
+
+  .spec-box-list li strong {
+    color: var(--color-ink-primary);
+  }
+</style>
