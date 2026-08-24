@@ -163,6 +163,20 @@ const isActive = (href: string) => {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  @media (max-width: 560px) {
+    .top-bar {
+      padding-block: 4px;
+    }
+
+    .top-bar-location {
+      display: none;
+    }
+
+    .top-bar-inner {
+      justify-content: center;
+    }
+  }
+
   .top-bar-inner {
     display: flex;
     justify-content: space-between;
