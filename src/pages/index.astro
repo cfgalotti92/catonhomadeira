@@ -169,28 +169,6 @@ const localPhotos = [
     <div class="hero-bg-overlay" aria-hidden="true"></div>
     <div class="container hero-container">
       <div class="hero-content">
-        <div class="hero-badges">
-          <div class="hero-badge-item badge-location">
-            <svg class="hero-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            <div class="badge-text">
-              <span class="badge-sub">Estrada do Catonho, 1205</span>
-              <strong class="badge-main">JACAREPAGUÁ · RJ</strong>
-            </div>
-          </div>
-
-          <a href="https://wa.me/5521979011647" target="_blank" rel="noopener noreferrer" class="hero-badge-item badge-whatsapp">
-            <svg class="hero-badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
-            </svg>
-            <div class="badge-text">
-              <span class="badge-sub">WhatsApp Comercial</span>
-              <strong class="badge-main">(21) 97901-1647</strong>
-            </div>
-          </a>
-        </div>
-
         <h1 class="hero-title">Madeireira em Jacarepaguá</h1>
         
         <p class="hero-lead">
@@ -615,13 +593,13 @@ const localPhotos = [
      ========================================================================== */
   .classic-hero {
     position: relative;
-    min-height: calc(100svh - 58px);
-    min-height: calc(100dvh - 58px);
+    min-height: calc(100svh - 60px);
+    min-height: calc(100dvh - 60px);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 0.5rem;
-    padding-bottom: clamp(2.5rem, 6vh, 4.5rem);
+    padding-top: 1rem;
+    padding-bottom: 2rem;
     background-color: var(--color-paper-dark);
     color: #ffffff;
     border-bottom: 1px solid var(--color-border-hairline);
@@ -667,138 +645,26 @@ const localPhotos = [
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: var(--radius-md);
-    padding: 1.35rem 1.15rem;
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 4vw, 2.5rem);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-    transform: translateY(-8px);
   }
 
   @media (min-width: 768px) {
     .hero-content {
-      border-radius: var(--radius-lg);
-      padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+      padding: clamp(3rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-      transform: none;
-    }
-  }
-
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 14px;
-    letter-spacing: 0.08em;
-  }
-
-  @media (min-width: 768px) {
-    .hero-badges {
-      gap: var(--space-3);
-      margin-bottom: var(--space-6);
-    }
-  }
-
-  .hero-badge-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 12px;
-    border-radius: var(--radius-full);
-    font-size: var(--text-xs);
-    text-decoration: none;
-    line-height: 1.2;
-    color: #ffffff !important;
-    transition: transform var(--transition-fast), background-color var(--transition-fast);
-  }
-
-  @media (min-width: 768px) {
-    .hero-badge-item {
-      gap: var(--space-2);
-      padding: 8px 18px;
-    }
-  }
-
-  .hero-badge-item * {
-    color: #ffffff !important;
-  }
-
-  .hero-badge-icon {
-    width: 14px;
-    height: 14px;
-    color: #ffffff !important;
-    flex-shrink: 0;
-  }
-
-  @media (min-width: 768px) {
-    .hero-badge-icon {
-      width: 16px;
-      height: 16px;
-    }
-  }
-
-  .badge-location {
-    background-color: rgba(25, 18, 12, 0.75) !important;
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .badge-whatsapp {
-    background-color: var(--color-whatsapp) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-  }
-
-  .badge-whatsapp:hover {
-    background-color: var(--color-whatsapp-hover) !important;
-    transform: translateY(-1px);
-  }
-
-  .badge-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    color: #ffffff !important;
-  }
-
-  .badge-sub {
-    font-size: 0.625rem;
-    color: oklch(0.92 0.01 75) !important;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.95;
-  }
-
-  @media (min-width: 768px) {
-    .badge-sub {
-      font-size: 0.6875rem;
-      letter-spacing: 0.12em;
-    }
-  }
-
-  .badge-main {
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #ffffff !important;
-  }
-
-  @media (min-width: 768px) {
-    .badge-main {
-      font-size: 0.8125rem;
-      letter-spacing: 0.14em;
     }
   }
 
   .hero-title {
     font-family: var(--font-display);
     font-style: normal;
-    font-size: clamp(1.45rem, 6.5vw, 2.2rem);
-    line-height: 1.2;
+    font-size: clamp(1.6rem, 7vw, 2.45rem);
+    line-height: 1.22;
     color: #ffffff !important;
-    margin: 0 0 12px 0;
-    letter-spacing: 0.025em;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     overflow-wrap: normal;
     word-break: normal;
@@ -815,11 +681,11 @@ const localPhotos = [
   }
 
   .hero-lead {
-    font-size: clamp(0.85rem, 3.8vw, 0.95rem);
+    font-size: clamp(0.9rem, 3.8vw, 1.02rem);
     color: oklch(0.94 0.01 75) !important;
-    line-height: 1.6;
+    line-height: 1.68;
     letter-spacing: 0.02em;
-    margin: 0 auto 18px auto;
+    margin: 0 auto 24px auto;
     max-width: 52ch;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   }
@@ -838,7 +704,7 @@ const localPhotos = [
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 12px;
   }
 
   @media (min-width: 480px) {
@@ -858,11 +724,11 @@ const localPhotos = [
   }
 
   .btn-hero-primary {
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 13px 22px;
+    padding: 15px 24px;
     color: #ffffff !important;
     box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
     white-space: normal;
@@ -886,10 +752,10 @@ const localPhotos = [
     background-color: rgba(25, 18, 12, 0.7) !important;
     color: #ffffff !important;
     border: 1.5px solid rgba(255, 255, 255, 0.75) !important;
-    padding: 11px 20px;
+    padding: 13px 22px;
     border-radius: var(--radius-sm);
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 0.825rem;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-decoration: none;
