@@ -92,9 +92,93 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Navigation Drawer -->
     <MobileNav currentPath={currentPath} />
 
+    <!-- Mobile Dual Sticky Bottom Bar (Ligar + WhatsApp) -->
+    <div class="mobile-sticky-bar" aria-label="Ações Rápidas de Contato">
+      <a href="tel:2124351454" class="sticky-btn-call" data-cta="mobile_sticky_call">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>Ligar Agora</span>
+      </a>
+
+      <a
+        href="https://wa.me/5521979011647?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sticky-btn-wa"
+        data-cta="mobile_sticky_whatsapp"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
+        </svg>
+        <span>Pedir no WhatsApp</span>
+      </a>
+    </div>
+
     <style>
       main:focus {
         outline: none;
+      }
+
+      .mobile-sticky-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--color-paper-card);
+        border-top: 1px solid var(--color-border);
+        padding: 8px var(--space-3);
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+        z-index: 100;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: var(--space-2);
+      }
+
+      @media (min-width: 768px) {
+        .mobile-sticky-bar {
+          display: none;
+        }
+      }
+
+      .sticky-btn-call {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background-color: var(--color-paper-dark);
+        color: #fff;
+        padding-block: 12px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: var(--text-xs);
+        text-decoration: none;
+      }
+
+      .sticky-btn-call:hover {
+        background-color: #000;
+        color: #fff;
+      }
+
+      .sticky-btn-wa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background-color: var(--color-whatsapp);
+        color: #fff;
+        padding-block: 12px;
+        border-radius: var(--radius-sm);
+        font-weight: 800;
+        font-size: var(--text-xs);
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+      }
+
+      .sticky-btn-wa:hover {
+        background-color: var(--color-whatsapp-hover);
+        color: #fff;
       }
     </style>
   </body>

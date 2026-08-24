@@ -155,6 +155,7 @@ const isActive = (href: string) => {
 
   /* Top Bar */
   .top-bar {
+    display: none;
     background-color: var(--color-paper-dark);
     color: var(--color-ink-inverse-muted);
     font-size: var(--text-xs);
@@ -162,16 +163,16 @@ const isActive = (href: string) => {
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
+  @media (min-width: 768px) {
+    .top-bar {
+      display: block;
+    }
+  }
+
   .top-bar-inner {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  }
-
-  @media (max-width: 640px) {
-    .top-bar-inner {
-      justify-content: center;
-    }
   }
 
   .top-bar-contact {

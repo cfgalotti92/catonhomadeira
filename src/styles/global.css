@@ -29,6 +29,13 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
 }
 
 /* ==========================================================================
