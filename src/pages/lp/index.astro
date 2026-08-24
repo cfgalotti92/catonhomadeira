@@ -97,13 +97,28 @@ const faqs = [
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Tag Manager: container supplied by the site owner -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KM3P3PK9');
+    </script>
     <SEOHead
       title="Madeiras para Telhado & Telhas no Rio | Catonho Madeiras (Orçamento Rápido)"
       description="Depósito de madeiras para telhado e telhas em Jacarepaguá. Vigas de Maçaranduba, Caibros, Ripas, Telhas e Portas. Cotação em 10 min no WhatsApp (21) 97901-1647 ou Ligue (21) 2435-1454."
+      canonical="https://lp.catonhomadeira.com.br/"
       noindex={false}
     />
   </head>
   <body class="lp-body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KM3P3PK9"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- 1. Header Focado (Anti-Vazamento) -->
     <header class="lp-header">
       <div class="container lp-header-inner">
@@ -133,7 +148,8 @@ const faqs = [
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.777.781 2.796.782 3.185 0 5.77-2.587 5.77-5.768 0-3.181-2.587-5.766-5.77-5.766zm3.376 8.204c-.149.42-1.077.839-1.488.882-.412.043-1.066.079-2.888-1.008-1.503-.896-2.482-2.735-2.557-2.859-.074-.124-.613-.815-.613-1.554 0-.739.387-1.103.525-1.252.137-.149.301-.186.401-.186.1 0 .2.001.288.006.094.005.219-.036.344.263.125.299.425 1.036.463 1.111.037.075.062.162.012.261-.05.1-.075.162-.15.249-.075.087-.157.195-.224.263-.075.074-.153.155-.066.304.087.149.389.641.834 1.038.572.51 1.054.667 1.203.742.149.075.237.062.325-.038.087-.099.375-.436.475-.585.1-.149.2-.124.337-.075.137.05.874.412 1.024.487.15.075.25.112.287.174.037.062.037.362-.112.782z"/>
             </svg>
-            <span>WhatsApp (21) 97901-1647</span>
+            <span class="lp-wa-text-full">WhatsApp (21) 97901-1647</span>
+            <span class="lp-wa-text-short">WhatsApp</span>
           </a>
         </div>
       </div>
@@ -456,7 +472,7 @@ const faqs = [
   .lp-body {
     background-color: var(--color-paper);
     color: var(--color-ink-primary);
-    padding-bottom: 74px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   }
 
   @media (min-width: 768px) {
@@ -551,7 +567,25 @@ const faqs = [
 
   .lp-wa-header-btn {
     font-size: var(--text-xs);
-    padding: 8px 16px;
+    padding: 8px 14px;
+  }
+
+  .lp-wa-text-short {
+    display: inline;
+  }
+
+  .lp-wa-text-full {
+    display: none;
+  }
+
+  @media (min-width: 520px) {
+    .lp-wa-text-short {
+      display: none;
+    }
+
+    .lp-wa-text-full {
+      display: inline;
+    }
   }
 
   /* 2. Hero Split Screen */
@@ -639,9 +673,12 @@ const faqs = [
   .lp-btn-primary-wa {
     font-size: var(--text-base);
     font-weight: 800;
-    padding: 16px 28px;
+    padding: 14px 20px;
     justify-content: center;
     box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
   }
 
   .lp-call-options {
@@ -1038,7 +1075,10 @@ const faqs = [
   .lp-btn-google-talk {
     font-size: var(--text-sm);
     font-weight: 800;
-    padding: 12px 24px;
+    padding: 12px 20px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
   }
 
   /* 6. FAQ */
@@ -1242,6 +1282,7 @@ const faqs = [
     background-color: var(--color-paper-card);
     border-top: 1px solid var(--color-border);
     padding: 8px var(--space-3);
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
     z-index: 100;
     box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
     display: grid;
