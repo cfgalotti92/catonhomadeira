@@ -8,41 +8,41 @@ import FAQAccordion from '../../components/ui/FAQAccordion.astro';
 
 const grillProducts = [
   {
-    name: 'Churrasqueira Pré-Moldada Tijolinho',
+    name: 'Churrasqueira Pré-Moldada Tijolinho Pintado',
     category: 'Churrasqueiras Pré-Moldadas',
     speciesOrMaterial: 'Concreto Refratário',
-    finishOrType: 'Acabamento Textura Tijolinho Vermelho',
-    dimensions: 'Larguras de 65, 75 e 85 cm',
+    finishOrType: 'Tijolinho pintado vermelho',
+    dimensions: 'Larguras de 55, 65 e 75 cm',
     image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-tijolinho.png',
-    imageAlt: 'Churrasqueira pré-moldada em concreto refratário estilo tijolinho',
+    imageAlt: 'Churrasqueira pré-moldada tijolinho pintado vermelho',
     badge: 'Mais Vendida'
   },
   {
-    name: 'Churrasqueira Pré-Moldada Predial',
+    name: 'Churrasqueira Pré-Moldada Tijolinho Pintado',
     category: 'Churrasqueiras Pré-Moldadas',
-    speciesOrMaterial: 'Concreto Refratário Reforçado',
-    finishOrType: 'Módulos para Dutos Altos / Prédios',
-    dimensions: 'Largura 80 cm / Altura sob medida',
+    speciesOrMaterial: 'Concreto Refratário',
+    finishOrType: 'Tijolinho pintado bege',
+    dimensions: 'Larguras de 55, 65 e 75 cm',
     image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-predial.png',
-    imageAlt: 'Churrasqueira pré-moldada predial com duto alto'
+    imageAlt: 'Churrasqueira pré-moldada tijolinho pintado bege'
   },
   {
-    name: 'Churrasqueira Pré-Moldada com Bancada',
-    category: 'Churrasqueiras & Área Gourmet',
-    speciesOrMaterial: 'Concreto Refratário com Bancada Acoplada',
-    finishOrType: 'Módulo Duplo com Espaço para Pia',
-    dimensions: 'Largura Total 1,20 m a 1,60 m',
+    name: 'Churrasqueira Pré-Moldada Tijolinho Pintado',
+    category: 'Churrasqueiras Pré-Moldadas',
+    speciesOrMaterial: 'Concreto Refratário',
+    finishOrType: 'Tijolinho pintado preto',
+    dimensions: 'Larguras de 55, 65 e 75 cm',
     image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-com-bancada.png',
-    imageAlt: 'Churrasqueira pré-moldada com bancada lateral para área gourmet'
+    imageAlt: 'Churrasqueira pré-moldada tijolinho pintado preto'
   },
   {
-    name: 'Churrasqueira Pré-Moldada Revestida',
-    category: 'Churrasqueiras & Área Gourmet',
-    speciesOrMaterial: 'Concreto Refratário Liso',
-    finishOrType: 'Preparada para Revestimento Porcelanato/Pedra',
-    dimensions: 'Largura 75 / 85 / 100 cm',
+    name: 'Churrasqueira Predial para Revestir',
+    category: 'Churrasqueiras Pré-Moldadas',
+    speciesOrMaterial: 'Concreto Refratário',
+    finishOrType: 'Cimento cru preparado para revestimento',
+    dimensions: 'Larguras de 55, 65 e 75 cm',
     image: '/images/products/churrasqueiras/churrasqueira-pre-moldada-revestida.png',
-    imageAlt: 'Churrasqueira pré-moldada lisa preparada para acabamento moderno'
+    imageAlt: 'Churrasqueira predial de cimento cru preparada para revestimento'
   }
 ];
 
@@ -53,7 +53,11 @@ const churrasqueirasFAQs = [
   },
   {
     question: 'Como deve ser feita a primeira queima da churrasqueira?',
-    answer: 'Após a montagem, aguarde 72 horas para a secagem da argamassa. Em seguida, faça uma queima suave de adaptação (apenas com jornais ou gravetos) no primeiro dia, aumentando gradualmente a carga de carvão nos dias seguintes para curar o refratário sem trincas.'
+    answer: 'Use aproximadamente 500 g de carvão comum e deixe queimar até o fim. Repita o processo três vezes, com intervalo de quatro horas entre os aquecimentos. Esse pré-aquecimento completa o processo de cura da churrasqueira.'
+  },
+  {
+    question: 'Posso revestir ou pintar a churrasqueira?',
+    answer: 'Sim. Faça primeiro o procedimento de pré-aquecimento e preserve todas as juntas de dilatação entre as peças. Use materiais adequados para áreas externas e mão de obra especializada.'
   },
   {
     question: 'Vocês vendem dutos prolongadores de chaminé para atravessar o telhado?',
@@ -64,7 +68,7 @@ const churrasqueirasFAQs = [
 
 <BaseLayout
   title="Churrasqueiras Pré-Moldadas em Jacarepaguá RJ"
-  description="Churrasqueiras pré-moldadas em concreto refratário, modelos tijolinho, predial e com bancada. Entrega rápida na Zona Oeste do Rio de Janeiro. Catonho Madeiras."
+  description="Churrasqueiras pré-moldadas tijolinho pintado e prediais para revestir, nas larguras de 55, 65 e 75 cm. Entrega na Zona Oeste do Rio de Janeiro."
 >
   <Breadcrumbs items={[{ label: 'Churrasqueiras Pré-Moldadas' }]} />
 
@@ -76,7 +80,7 @@ const churrasqueirasFAQs = [
           <div class="badge">Área Gourmet & Lazer · Jacarepaguá</div>
           <h1 class="cat-hero-title">Churrasqueiras Pré-Moldadas em Concreto Refratário no RJ</h1>
           <p class="cat-hero-desc">
-            Praticidade e rapidez para a sua área de lazer. Churrasqueiras pré-moldadas em concreto refratário nos modelos tijolinho, liso para revestir, predial e opções com bancada lateral para pia.
+            Modelos tijolinho pintado e predial para revestir, disponíveis nas larguras de 55, 65 e 75 cm para sua área de lazer.
           </p>
           <div class="cat-hero-actions">
             <a
@@ -99,7 +103,7 @@ const churrasqueirasFAQs = [
             <li><strong>Montagem Ágil:</strong> Instalação em poucas horas sem semanas de obra.</li>
             <li><strong>Concreto Refratário:</strong> Resistência comprovada a altas temperaturas.</li>
             <li><strong>Módulos de Chaminé:</strong> Ajuste fácil à altura do seu telhado.</li>
-            <li><strong>Opção com Bancada:</strong> Espaço integrado para apoio e pia.</li>
+            <li><strong>Três Larguras:</strong> Modelos de 55, 65 e 75 cm.</li>
           </ul>
         </div>
       </div>
@@ -112,7 +116,7 @@ const churrasqueirasFAQs = [
       <div class="section-header">
         <h2 id="catalog-grill-heading" class="section-title">Modelos de Churrasqueiras</h2>
         <p class="section-desc">
-          Módulos de alta densidade refratária com acabamento elegante para sua casa ou condomínio.
+          Escolha entre os acabamentos tijolinho pintado e cimento cru preparado para revestimento.
         </p>
       </div>
 
@@ -137,10 +141,13 @@ const churrasqueirasFAQs = [
   <section class="guide-section section-py">
     <div class="container container-narrow">
       <div class="badge">Dica Técnica</div>
-      <h2 class="guide-title">Como Garantir a Máxima Vida Útil da sua Churrasqueira</h2>
+      <h2 class="guide-title">Como planejar o espaço e fazer o primeiro acendimento</h2>
       <p class="guide-text">
-        O segredo para uma churrasqueira pré-moldada não trincar está no assentamento correto com argamassa refratária e na queima de cura gradual. Veja o passo a passo detalhado no artigo do nosso blog sobre <a href="/blog/churrasqueira-pre-moldada-instalacao-cuidados/">instalação de churrasqueiras pré-moldadas e primeira queima</a>.
+        Consulte as medidas, os cuidados com a instalação, o procedimento de cura e as orientações para aplicar revestimento sem cobrir as juntas de dilatação.
       </p>
+      <a href="/blog/churrasqueira-pre-moldada-instalacao-cuidados/" class="btn btn-secondary guide-link">
+        Ver guia de planejamento e uso
+      </a>
     </div>
   </section>
 
@@ -254,5 +261,9 @@ const churrasqueirasFAQs = [
     color: var(--color-ink-secondary);
     max-width: 650px;
     margin-inline: auto;
+  }
+
+  .guide-link {
+    margin-top: var(--space-5);
   }
 </style>

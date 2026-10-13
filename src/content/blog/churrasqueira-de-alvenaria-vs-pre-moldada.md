@@ -2,7 +2,7 @@
 title: "Churrasqueira de Alvenaria vs Pré-Moldada: Comparativo de Preço, Tempo de Obra e Durabilidade"
 description: "Compare as vantagens da churrasqueira pré-moldada refratária com a tradicional de alvenaria para sua área gourmet no Rio de Janeiro. Análise de custo total, tempo de montagem, peso e eficiência térmica."
 pubDate: 2026-08-22
-updatedDate: 2026-08-22
+updatedDate: 2026-10-12
 author: "Equipe Técnica Catonho Madeiras"
 category: "Decks, Pergolados e Lazer"
 tags: ["churrasqueira pre-moldada", "churrasqueira alvenaria", "area gourmet rj", "churrasqueira concreto refratario", "custo churrasqueira"]
@@ -41,15 +41,16 @@ Abaixo, comparamos os dois sistemas ponto a ponto.
 
 ---
 
-## 3. O Cuidado Principal: A Primeira Queima (Cura)
+## 3. O cuidado principal: o primeiro acendimento
 
-Seja qual for o modelo pré-moldado escolhido, a regra obrigatória é realizar a **cura térmica gradual**:
-- Nas primeiras **3 a 4 utilizações**, acenda apenas pequenos gravetos ou um punhado pequeno de carvão para aquecer as placas lentamente e expulsar qualquer umidade interna sem choque térmico.
+O pré-aquecimento completa o processo de cura da churrasqueira. Use aproximadamente **500 g de carvão comum**, deixe queimar até o fim e repita o processo três vezes, com intervalo de quatro horas entre os aquecimentos.
+
+Nunca use água para diminuir ou apagar o fogo. Espalhe as brasas e aguarde o resfriamento.
 
 ---
 
-## Churrasqueiras Pré-Moldadas na Catonho Madeiras
+## Churrasqueiras pré-moldadas na Catonho Madeiras
 
-Na **Catonho Madeiras**, trabalhamos com **churrasqueiras pré-moldadas em concreto refratário** nos tamanhos Médio (65cm), Grande (75cm) e Especial (85cm) com acabamento tijolinho, dutos, coifas, chapéus e gavetas cinzeiro.
+Na **Catonho Madeiras**, trabalhamos com **churrasqueiras pré-moldadas em concreto refratário** nas larguras de 55 cm, 65 cm e 75 cm. Há modelos tijolinho pintado e churrasqueira predial de cimento cru preparada para revestimento.
 
 Escolha a churrasqueira ideal para sua casa no [WhatsApp (21) 97901-1647](https://wa.me/5521979011647)!

@@ -21,7 +21,8 @@ const {
   badge
 } = Astro.props;
 
-const encodedProduct = encodeURIComponent(`Olá! Gostaria de solicitar um orçamento para o produto: ${name} (${category}).`);
+const productDetail = finishOrType ? `, acabamento: ${finishOrType}` : '';
+const encodedProduct = encodeURIComponent(`Olá! Gostaria de solicitar um orçamento para o produto: ${name}${productDetail} (${category}).`);
 const quoteUrl = `https://wa.me/5521979011647?text=${encodedProduct}`;
 ---
 
